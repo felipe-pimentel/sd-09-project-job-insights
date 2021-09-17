@@ -32,6 +32,7 @@ def job(index):
     # o segundo parâmetro do render_template são as variáveis do arquivo
     # mas tava difícil achar o "job" no job.jinja2
 
+
 @bp.route("/jobs")
 def list_jobs():
     first_job = get_int_from_args("first_job", 0)

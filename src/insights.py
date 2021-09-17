@@ -12,6 +12,8 @@ def get_unique_job_types(path):
     -------
     list
         List of unique job types
+
+    TkdCris
     """
     return []
 

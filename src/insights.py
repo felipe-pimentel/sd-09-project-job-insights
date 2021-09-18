@@ -106,7 +106,7 @@ def get_max_salary(path):
     salaries = [
         int(salary["max_salary"])
         for salary in jobs_list
-        if salary["max_salary"]
+        if salary["max_salary"].isnumeric()
     ]
     return max(salaries)
 
@@ -130,7 +130,7 @@ def get_min_salary(path):
     salaries = [
         int(salary["min_salary"])
         for salary in jobs_list
-        if salary["min_salary"]
+        if salary["min_salary"].isnumeric()
     ]
     return min(salaries)
 

@@ -32,7 +32,7 @@ PATH = "src/jobs.csv"
 
 
 # deve ter a rota '/jobs/<index>
-@bp.route("/jobs/<index>")
+@bp.route("/job/<index>")
 # recebe o parametro index declarado acima
 def job(index):
     # deve chamar a read para ter uma lista com todos os jobs.

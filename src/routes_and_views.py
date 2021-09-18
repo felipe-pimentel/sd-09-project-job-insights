@@ -43,7 +43,7 @@ def job(index):
     job = get_job(jobs, index)
     # deve renderizar o template job.jinja2, passando um parâmetro job
     #  contendo o job retornado pela get_job
-    return render_template("list_jobs.jinja2", job=job)
+    return render_template("job.jinja2", job=job)
 
 
 @bp.route("/jobs")

@@ -58,44 +58,35 @@ print("min_salary:", get_min_salary("src/jobs.csv"))
 
 
 def matches_salary_range(job, salary):
-    """Checks if a given salary is in the salary range of a given job
+    try:
+        if int(job["min_salary"]) > int(job["max_salary"]):
+            return ValueError
+        if int(job["max_salary"]) > salary > int(job["min_salary"]):
+            return True
+        else:
+            return False
+    except (ValueError, TypeError):
+        return ValueError
 
-    Parameters
-    ----------
-    job : dict
-        The job with `min_salary` and `max_salary` keys
-    salary : int
-        The salary to check if matches with salary range of the job
 
-    Returns
-    -------
-    bool
-        True if the salary is in the salary range of the job, False otherwise
-
-    Raises
-    ------
-    ValueError
-        If `job["min_salary"]` or `job["max_salary"]` doesn't exists
-        If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
-        If `job["min_salary"]` is greather than `job["max_salary"]`
-        If `salary` isn't a valid integer
-    """
-    pass
+job = read("src/jobs.csv")[100]
+# print(matches_salary_range({
+#     "min_salary": 100000,
+#     "max_salary": 150000
+#  }, 125000))
 
 
 def filter_by_salary_range(jobs, salary):
-    """Filters a list of jobs by salary range
+    jobs_with_validy_salary = [
+        job for job in jobs
+        if job["max_salary"] != '' and job["min_salary"] != '']
 
-    Parameters
-    ----------
-    jobs : list
-        The jobs to be filtered
-    salary : int
-        The salary to be used as filter
+    filtered_jobs = []
+    for job in jobs_with_validy_salary:
+        print(matches_salary_range(job, salary))
+        if matches_salary_range(job, salary) is True:
+            filtered_jobs.append(job)
+    return filtered_jobs
 
-    Returns
-    -------
-    list
-        Jobs whose salary range contains `salary`
-    """
-    return []
+
+# filter_by_salary_range(read("src/jobs.csv"), 200000)

@@ -28,15 +28,12 @@ def index():
     return render_template("index.jinja2", md=md)
 
 
-PATH = "src/jobs.csv"
-
-
 # deve ter a rota '/jobs/<index>
 @bp.route("/job/<index>")
 # recebe o parametro index declarado acima
 def job(index):
     # deve chamar a read para ter uma lista com todos os jobs.
-    jobs = read(path=PATH)
+    jobs = read(path="src/jobs.csv")
     # deve chamar a get_job, declarada no arquivo src/more_insights.py,
     # para selecionar um job específico pelo index.
     # recebe como parametro uma lista de jobs e um id ou o index

@@ -83,11 +83,10 @@ def filter_by_salary_range(jobs, salary):
     for job in jobs:
         if (
             ("min_salary" in job.keys() and "max_salary" in job.keys())
-            and (job["min_salary"] is not None and job['min_salary' != ''])
-            and (job["max_salary"] is not None and job['max_salary' != ''])
             and job["min_salary"] <= job["max_salary"]
+            and (job['max_salary'] >= 0 and job['min_salary'] >= 0)
+            and (isinstance(salary, int))
             and matches_salary_range(job, salary)
         ):
-            print(job)
             job_list.append(job)
     return job_list

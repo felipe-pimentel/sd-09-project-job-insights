@@ -74,34 +74,31 @@ def get_min_salary(path):
 
 def salaries_range_validation(job):
     if ("min_salary" not in job or "max_salary" not in job):
-        raise ValueError("ValueError")
+        raise ValueError()
 
-    if (type(job["min_salary"]) != "int" or type(job["max_salary"]) != "int"):
-        raise ValueError("ValueError")
+    if (not isinstance(job["min_salary"], int)):
+        raise ValueError()
+
+    if (not isinstance(job["max_salary"], int)):
+        raise ValueError()
 
     if (job["min_salary"] > job["max_salary"]):
-        raise ValueError("ValueError")
+        raise ValueError()
 
 
 def salary_validation(salary):
-    if (type(salary) != "int"):
-        raise ValueError("ValueError")
+    if (not isinstance(salary, int)):
+        raise ValueError()
 
 
 def matches_salary_range(job, salary):
-    try:
-        salaries_range_validation(job)
-        salary_validation(salary)
+    salaries_range_validation(job)
+    salary_validation(salary)
 
-    except ValueError as err:
-        print(err)
-        raise
+    if (salary >= job["min_salary"] and salary <= job["max_salary"]):
+        return True
 
-    else:
-        if (salary >= job["min_salary"] and salary <= job["max_salary"]):
-            return True
-
-        return False
+    return False
 
 
 def filter_by_salary_range(jobs, salary):

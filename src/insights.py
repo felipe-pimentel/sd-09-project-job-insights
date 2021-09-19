@@ -91,5 +91,7 @@ def filter_by_salary_range(jobs, salary):
                     list.append(row)
     return list
 
-# Última função estava dando um erro, TypeError: '<=' not supported between instances of 'int' and 'NoneType'
-# Solução foi passar os salarios para int, encontrada no repositório: https://github.com/tryber/sd-08-project-job-insights/pull/23/files
+# Última função estava dando um erro,
+# TypeError: '<=' not supported between instances of 'int' and 'NoneType'
+# Solução foi passar os salarios para int, encontrada no repositório:
+# https://github.com/tryber/sd-08-project-job-insights/pull/23/files

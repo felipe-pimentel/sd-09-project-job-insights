@@ -1,13 +1,5 @@
-import pytest
-
-
 from src.sorting import sort_by
 
-
-# O teste rejeita implementações que aceitam critérios não especificados.
-# O teste rejeita implementações que não ordenam corretamente.
-# O teste rejeita implementações que não ordenam em ordem crescente quando o critério é min_salary.
-# O teste aprova implementações corretas.
 
 def test_sort_by_criteria():
 

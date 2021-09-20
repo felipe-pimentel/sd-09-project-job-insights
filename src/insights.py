@@ -28,6 +28,7 @@ def get_unique_job_types(path):
 
 def filter_by_job_type(jobs, job_type):
     job_list = []
+
     for job in jobs:
         if (job['job_type'] == job_type):
             job_list.append(job)
@@ -77,6 +78,7 @@ def get_unique_industries(path):
 
 def filter_by_industry(jobs, industry):
     job_list = []
+
     for job in jobs:
         if (job['industry'] == industry):
             job_list.append(job)
@@ -194,7 +196,19 @@ def matches_salary_range(job, salary):
     """
 
 
+# nao ia fazer os if tudo de novo entao usei try
 def filter_by_salary_range(jobs, salary):
+    job_list = []
+
+    for job in jobs:
+        try:
+            if (matches_salary_range(job, salary)):
+                job_list.append(job)
+        except Exception:
+            print('nao funfa')
+
+    return job_list
+
     """Filters a list of jobs by salary range
 
     Parameters
@@ -209,4 +223,3 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return []

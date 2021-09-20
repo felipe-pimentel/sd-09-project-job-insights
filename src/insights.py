@@ -12,7 +12,6 @@ def get_unique_job_types(path):
 
     """Checks all different job types and returns a list of them
 
-
     Must call `read`
 
     Parameters
@@ -59,6 +58,7 @@ def get_unique_industries(path):
             jobs_around.add(jobs['industry'])
 
     return jobs_around
+
     """Checks all different industries and returns a list of them
 
     Must call `read`
@@ -81,6 +81,7 @@ def filter_by_industry(jobs, industry):
         if (job['industry'] == industry):
             job_list.append(job)
     return job_list
+
     """Filters a list of jobs by industry
 
     Parameters
@@ -107,6 +108,7 @@ def get_max_salary(path):
 
     job_max_value = max(jobs_around, key=int)
     return job_max_value
+
     """Get the maximum salary of all jobs
 
     Must call `read`
@@ -150,6 +152,24 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
+    if not ((
+        isinstance(job.get('min_salary'), int)
+        and isinstance(job.get('max_salary'), int))
+    ):
+        raise ValueError('Problemas com tipo de min e max sal')
+    if not isinstance(salary, int):
+        raise ValueError('Problemas com tipo do salary')
+    if (
+        'min_salary' not in job
+        and 'max_salary' not in job
+    ):
+        raise ValueError('Problemas com ausensia de min ou max sal')
+    if job['min_salary'] > job['max_salary']:
+        raise ValueError('Problemas com min maior que max')
+    check = int(job['min_salary']) <= salary <= int(job['max_salary'])
+
+    return check
+
     """Checks if a given salary is in the salary range of a given job
 
     Parameters
@@ -172,7 +192,6 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    pass
 
 
 def filter_by_salary_range(jobs, salary):

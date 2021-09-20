@@ -86,5 +86,4 @@ def filter_by_salary_range(jobs, salary):
         else:
             if result:
                 match_jobs.append(job)
-    print(match_jobs)
     return match_jobs

@@ -1,3 +1,6 @@
+from src.jobs import read
+
+
 def get_unique_job_types(path):
     """Checks all different job types and returns a list of them
 
@@ -15,6 +18,8 @@ def get_unique_job_types(path):
 
     TkdCris
     """
+    jobs = read(path)
+    print(jobs)
     return []
 
 

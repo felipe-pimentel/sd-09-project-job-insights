@@ -32,9 +32,6 @@ def get_unique_industries(path):
         return [industry for industry in filter(None, (list(set(row))))]
 
 
-print(get_unique_industries('src/jobs.csv'))
-
-
 def filter_by_industry(jobs, industry):
     """Filters a list of jobs by industry
 
@@ -53,39 +50,31 @@ def filter_by_industry(jobs, industry):
     return []
 
 
+def filter_list(row):
+    filter_list_empty = filter(None, (list(set(row))))
+    list_salary = [min_salary for min_salary in filter_list_empty]
+    filter_salary_not_string = []
+    for line in list_salary:
+        if line.isdigit():
+            filter_salary_not_string.append(line)
+    return filter_salary_not_string
+
+
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
+    with open(path, mode='r') as file:
+        file_reader = csv.DictReader(file, delimiter=',')
+        row = [row["max_salary"] for row in file_reader]
+        list_salary = filter_list(row)
+        return int(max(list_salary, key=int))
     pass
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
+    with open(path, mode='r') as file:
+        file_reader = csv.DictReader(file, delimiter=',')
+        row = [row["min_salary"] for row in file_reader]
+        list_salary = filter_list(row)
+        return int(min(list_salary, key=int))
     pass
 
 

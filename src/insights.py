@@ -15,7 +15,6 @@ def filter_by_job_type(jobs, job_type):
     for job in jobs:
         if job['job_type'] == job_type:
             output.append(job)
-
     return output
 
 
@@ -33,7 +32,6 @@ def filter_by_industry(jobs, industry):
     for job in jobs:
         if job['industry'] == industry:
             output.append(job)
-
     return output
 
 

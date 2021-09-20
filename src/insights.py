@@ -1,11 +1,12 @@
-from src.jobs import read
+from src import jobs
 
 
 def get_unique_job_types(path):
-    jobs = read(path)
+    all_jobs = jobs.read(path)
     output = []
-    for job in jobs:
-        output.append(job["job_type"])
+    for job in all_jobs:
+        if job["job_type"] not in output:
+            output.append(job["job_type"])
     return output
 
 

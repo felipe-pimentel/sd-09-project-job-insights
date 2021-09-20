@@ -50,7 +50,6 @@ def filter_by_job_type(jobs, job_type):
     """
 
 
-
 def get_unique_industries(path):
     jobs_list = read(path)
     jobs_around = set()

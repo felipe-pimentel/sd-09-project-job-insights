@@ -62,7 +62,7 @@ def get_max_salary(path):
         if job["max_salary"] not in output and job["max_salary"] != '':
             try:
                 output.append(int(job['max_salary']))
-            except:
+            except Exception:
                 print("Error in converting")
     return max(output)
 

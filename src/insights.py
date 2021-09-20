@@ -111,9 +111,11 @@ def get_max_salary(path):
         try:
             return(int(number))
         except(ValueError):
-            return 0
+            return None
 
     SALARY_LIST_FILTERED = list(map(is_number, SALARY_LIST))
+    SALARY_LIST_FILTERED = list(filter(
+        lambda salary: salary is not None, SALARY_LIST_FILTERED))
 
     return max(SALARY_LIST_FILTERED)
 
@@ -141,10 +143,12 @@ def get_min_salary(path):
     def is_number(number):
         try:
             return(int(number))
-        except(ValueError):
-            return
+        except(Exception):
+            return None
 
     SALARY_LIST_FILTERED = list(map(is_number, SALARY_LIST))
+    SALARY_LIST_FILTERED = list(filter(
+        lambda salary: salary is not None, SALARY_LIST_FILTERED))
 
     return min(SALARY_LIST_FILTERED)
 

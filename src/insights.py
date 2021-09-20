@@ -60,7 +60,7 @@ def get_min_salary(path):
 
 def matches_salary_range(job, salary):
     if 'max_salary' not in job.keys() or 'min_salary' not in job.keys():
-        raise ValueError("aren't valid integers")
+        raise ValueError("some key does not exist")
 
     max_salary = type(job['max_salary']) is not int
     min_salary = type(job['max_salary']) is not int

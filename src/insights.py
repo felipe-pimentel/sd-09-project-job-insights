@@ -164,6 +164,7 @@ def matches_salary_range(job, salary):
     """
     if not ("min_salary" in job.keys() and "max_salary" in job.keys()):
         raise ValueError("min_salary and max_salary is not keys")
+    # https://pt.stackoverflow.com/questions/176525/como-posso-saber-se-a-vari%C3%A1vel-%C3%A9-um-n%C3%BAmero-inteiro-em-python
     if not (
         isinstance(job["min_salary"], int)
         and isinstance(job["max_salary"], int)
@@ -194,8 +195,14 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    filtered_jobs = list()
+    filtered_jobs = []
     for job in jobs:
-        if matches_salary_range(job, salary):
-            filtered_jobs.append(matches_salary_range(job, salary))
+        if (
+            isinstance(salary, int)
+            and ("min_salary" in job.keys() and "max_salary" in job.keys())
+            and (job["min_salary"] >= 0 and job["max_salary"] >= 0)
+            and job["min_salary"] <= job["max_salary"]
+            and matches_salary_range(job, salary)
+        ):
+            filtered_jobs.append(job)
     return filtered_jobs

@@ -28,6 +28,12 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
+    job_list = []
+    for job in jobs:
+        if (job['job_type'] == job_type):
+            job_list.append(job)
+    return job_list
+
     """Filters a list of jobs by job_type
 
     Parameters
@@ -42,7 +48,7 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    return []
+
 
 
 def get_unique_industries(path):
@@ -68,7 +74,6 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    return []
 
 
 def filter_by_industry(jobs, industry):
@@ -113,7 +118,6 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
 
 
 def get_min_salary(path):
@@ -140,7 +144,6 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
 
 
 def matches_salary_range(job, salary):

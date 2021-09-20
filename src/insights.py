@@ -90,6 +90,15 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
+    jobs_list = read(path)
+    jobs_around = set()
+
+    for jobs in jobs_list:
+        if (jobs['max_salary'].isdigit()):
+            jobs_around.add(int(jobs['max_salary']))
+
+    job_max_value = max(jobs_around, key=int)
+    return job_max_value
     """Get the maximum salary of all jobs
 
     Must call `read`
@@ -108,6 +117,15 @@ def get_max_salary(path):
 
 
 def get_min_salary(path):
+    jobs_list = read(path)
+    jobs_around = set()
+
+    for jobs in jobs_list:
+        if (jobs['min_salary'].isdigit()):
+            jobs_around.add(int(jobs['min_salary']))
+
+    job_min_value = min(jobs_around, key=int)
+    return job_min_value
     """Get the minimum salary of all jobs
 
     Must call `read`

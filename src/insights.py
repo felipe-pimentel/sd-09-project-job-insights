@@ -59,38 +59,27 @@ def get_max_salary(path):
         jobs_reader = csv.DictReader(file)
         jobs = [job for job in jobs_reader]
 
-        # max_salary = jobs.index(jobs)
-        industries = []
+        max_salary = []
 
         for job in jobs:
-            if job["job_title"] != "" and job["job_title"] not in industries:
-                # print(len(job["job_title"]))
-                # print({job["job_title"]: job["max_salary"]})
-                industries.append({job["job_title"]: job["max_salary"]})
-    # print(industries)
-    # return industries
-    # pass
+            if job["max_salary"].isnumeric():
+                max_salary.append(int((job["max_salary"])))
 
-
-# get_max_salary("jobs.csv")
+    return max(max_salary)
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
+    with open(path) as file:
+        jobs_reader = csv.DictReader(file)
+        jobs = [job for job in jobs_reader]
 
-    Must call `read`
+        min_salary = []
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
+        for job in jobs:
+            if job["min_salary"].isnumeric():
+                min_salary.append(int((job["min_salary"])))
 
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    return min(min_salary)
 
 
 def matches_salary_range(job, salary):

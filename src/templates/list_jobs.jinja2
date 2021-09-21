@@ -93,7 +93,7 @@
         <tr>
             <td scope="row">
                 {% if job["url"] %}
-                <a href="/job/{{ job["id"] }}">
+                <a href="{{ job['url'] }}">
                     {{ job["id"] }}
                 </a>
                 {% else %}

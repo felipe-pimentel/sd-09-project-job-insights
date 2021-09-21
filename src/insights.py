@@ -1,91 +1,78 @@
+import csv
+
+
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
 
-    Must call `read`
+    with open(path) as file:
+        jobs_reader = csv.DictReader(file)
+        jobs = [job for job in jobs_reader]
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
+    job_types = []
 
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    return []
+    for job in jobs:
+        if job["job_type"] not in job_types:
+            job_types.append(job["job_type"])
+
+    return job_types
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
+    job_upper = job_type.upper()
+    jobs_type = []
 
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
+    for job in jobs:
+        print(job["job_type"])
+        if job["job_type"] == job_upper:
+            jobs_type.append(job)
 
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    return jobs_type
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
+    with open(path) as file:
+        jobs_reader = csv.DictReader(file)
+        jobs = [job for job in jobs_reader]
 
-    Must call `read`
+        industries = []
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
+        for job in jobs:
+            if job["industry"] not in industries and job["industry"] != "":
+                industries.append(job["industry"])
 
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    return industries
 
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
+    jobs_type = []
 
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
+    for job in jobs:
+        print(job["industry"])
+        if job["industry"] == industry:
+            jobs_type.append(job)
 
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
+    return jobs_type
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
 
-    Must call `read`
+    with open(path) as file:
+        jobs_reader = csv.DictReader(file)
+        jobs = [job for job in jobs_reader]
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
+        # max_salary = jobs.index(jobs)
+        industries = []
 
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+        for job in jobs:
+            if job["job_title"] != "" and job["job_title"] not in industries:
+                # print(len(job["job_title"]))
+                # print({job["job_title"]: job["max_salary"]})
+                industries.append({job["job_title"]: job["max_salary"]})
+    # print(industries)
+    # return industries
+    # pass
+
+
+# get_max_salary("jobs.csv")
 
 
 def get_min_salary(path):

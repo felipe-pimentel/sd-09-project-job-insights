@@ -13,5 +13,5 @@ def read(path):
 
         for job in jobs:
             new_list.append(dict(job))
-       
+
     return new_list

@@ -130,8 +130,8 @@ Na estrutura deste _template_, você deve implementar as funções necessárias.
 
 ### Data de Entrega
 
-- Serão `X` dias de projeto.
-- Data de entrega para avaliação final do projeto: `DD/MM/YYYY - 14:00h`.
+- Serão `2` dias de projeto.
+- Data de entrega para avaliação final do projeto: `05/10/2021 - 14:00h`.
 
 ---
 

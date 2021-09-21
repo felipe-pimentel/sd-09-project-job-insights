@@ -33,7 +33,14 @@ def index():
 # recebe o parametro index declarado acima
 def job(index):
     # deve chamar a read para ter uma lista com todos os jobs.
-    jobs = read(path="src/jobs.csv")
+    # -> Outro jeito
+    # path = "src/jobs.csv"
+    # jobs = read(path)
+
+    jobs = read("src/jobs.csv")
+
+    # -> Utilizar jobs = read(path="src/jobs.csv") não passa no requisito
+
     # deve chamar a get_job, declarada no arquivo src/more_insights.py,
     # para selecionar um job específico pelo index.
     # recebe como parametro uma lista de jobs e um id ou o index

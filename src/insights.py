@@ -55,23 +55,23 @@ def filter_by_industry(jobs, industry):
 def get_max_salary(path):
     jobs = read(path)
 
-    max_salary = 0
+    max_sal = 0
 
     for job in jobs:
-        if job["max_salary"] != "" and int(job["max_salary"]) > max_salary:
-            max_salary = int(job["max_salary"])
+        if job["max_salary"].isnumeric() and int(job["max_salary"]) > max_sal:
+            max_sal = int(job["max_salary"])
 
-    return max_salary
+    return max_sal
 
 
 def get_min_salary(path):
     jobs = read(path)
 
-    min_salary = set()
+    min_salary = []
 
     for job in jobs:
-        if job["min_salary"] != "":
-            min_salary.add(int(job["min_salary"]))
+        if job["min_salary"].isnumeric():
+            min_salary.append(int(job["min_salary"]))
 
     min_salary.sort()
 

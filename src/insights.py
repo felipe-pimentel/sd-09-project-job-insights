@@ -171,8 +171,8 @@ def matches_salary_range(job, salary):
     ):
         raise ValueError("min_salary and max_salary is not int")
     if not (
-        job["min_salary"] >= 0
-        and job["max_salary"] >= 0
+        int(job["min_salary"]) >= 0
+        and int(job["max_salary"]) >= 0
     ):
         raise ValueError("min_salary and max_salary is not greater than zero")
     if job["min_salary"] > job["max_salary"]:
@@ -200,8 +200,10 @@ def filter_by_salary_range(jobs, salary):
         if (
             isinstance(salary, int)
             and ("min_salary" in job.keys() and "max_salary" in job.keys())
-            and (job["min_salary"] >= 0 and job["max_salary"] >= 0)
-            and job["min_salary"] <= job["max_salary"]
+            and isinstance(job["min_salary"], int)
+            and isinstance(job["max_salary"], int)
+            and int(job["min_salary"]) >= 0 and int(job["max_salary"]) >= 0
+            and int(job["min_salary"]) <= int(job["max_salary"])
             and matches_salary_range(job, salary)
         ):
             filtered_jobs.append(job)

@@ -214,4 +214,28 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return []
+    SALARY_BY_RANGE = []
+
+    for job in jobs:
+        try:
+            RESULT = matches_salary_range(job, salary)
+            if RESULT:
+                SALARY_BY_RANGE = [*SALARY_BY_RANGE, job]
+        except ValueError:
+            print('Deu ruim')
+
+    return SALARY_BY_RANGE
+
+    # Nao funciona, pq?
+
+    # try:
+    #     RESULT = list(
+    #         map(
+    #             lambda job: matches_salary_range(
+    #                 job, salary) and job, jobs
+    #         )
+    #     )
+
+    #     return RESULT
+    # except ValueError:
+    #     print('Deu ruim')

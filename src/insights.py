@@ -18,75 +18,43 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    jobs = read(path)
+    industries = set()
+    industries_list = set()
+    for job in jobs:
+        industries.add(job["industry"])
+    for industry in industries:
+        if len(industry):
+            industries_list.add(industry)
+    return industries_list
 
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
+    jobs_list = []
+    for job in jobs:
+        if job["industry"] == industry:
+            jobs_list.append(job)
+    return jobs_list
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    jobs = read(path)
+    salaries_list = set()
+    for salary in jobs:
+        salary_num = salary["max_salary"]
+        if salary_num.isnumeric():
+            salaries_list.add(int(salary_num))
+    return max(salaries_list)
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    jobs = read(path)
+    salaries_list = set()
+    for salary in jobs:
+        salary_num = salary["min_salary"]
+        if salary_num.isnumeric():
+            salaries_list.add(int(salary_num))
+    return min(salaries_list)
 
 
 def matches_salary_range(job, salary):

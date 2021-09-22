@@ -30,21 +30,14 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    with open(path) as file:
+        content = csv.DictReader(file, delimiter=",", quotechar='"')
+        unique_industries = []
+        for job in content:
+            if job["industry"] not in unique_industries:
+                if job["industry"] != "":
+                    unique_industries.append(job["industry"])
+    return unique_industries
 
 
 def filter_by_industry(jobs, industry):
@@ -66,21 +59,16 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    with open(path) as file:
+        content = csv.DictReader(file)
+        # cria um elemento que será iteravel
+        salaries = set()
+        for job in content:
+            # verifica que o valor existe
+            if job["max_salary"].isdigit() and job["max_salary"] != "":
+                # transforma o valor em numero
+                salaries.add(int(job["max_salary"]))
+        return max(salaries)
 
 
 def get_min_salary(path):

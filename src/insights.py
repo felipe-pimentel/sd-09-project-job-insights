@@ -1,6 +1,10 @@
 import src.jobs
 
 
+"""https://towardsdatascience.com/
+how-to-fix-modulenotfounderror-and-importerror-248ce5b69b1c"""
+
+
 def get_unique_job_types(path):
     jobs_list = src.jobs.read(path)
     result = set()
@@ -29,21 +33,14 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    jobs_list = src.jobs.read(path)
+    result = set()
+    for job in jobs_list:
+        for industry_type in job["industry"].split(","):
+            if industry_type != "":
+                result.add(industry_type)
+    print(result)
+    return result
 
 
 def filter_by_industry(jobs, industry):
@@ -65,21 +62,15 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    jobs_list = src.jobs.read(path)
+    result = set()
+    for job in jobs_list:
+        try:
+            if job["max_salary"] != "":
+                result.add(int(job["max_salary"]))
+        except ValueError:
+            print('Campo inválido')
+    return max(result)
 
 
 def get_min_salary(path):

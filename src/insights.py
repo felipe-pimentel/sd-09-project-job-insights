@@ -29,6 +29,24 @@ def get_unique_job_types(path):
     return jobs_types
 
 
+"""
+3 - Implemente a função get_unique_industries
+local: src/insights.py
+
+Da mesma forma, agora iremos identificar quais indústrias estão representadas
+nesse conjunto de dados.
+  A função deve obter os dados da mesma forma que o requisito 2.
+  A função deve retornar uma lista de valores únicos presentes na coluna
+  industry.
+  A função desconsidera valores vazios
+
+O que será verificado pelo avaliador:
+  A função carrega os dados do arquivo recebido como parâmetro
+  A função retorna a quantidade correta de valores
+  A função retorna os valores corretos
+"""
+
+
 def filter_by_job_type(jobs, job_type):
     """Filters a list of jobs by job_type
 
@@ -47,22 +65,31 @@ def filter_by_job_type(jobs, job_type):
     return []
 
 
+"""
+3 - Implemente a função get_unique_industries
+local: src/insights.py
+
+Da mesma forma, agora iremos identificar quais indústrias estão representadas
+nesse conjunto de dados.
+  A função deve obter os dados da mesma forma que o requisito 2.
+  A função deve retornar uma lista de valores únicos presentes na coluna
+  industry.
+  A função desconsidera valores vazios
+
+O que será verificado pelo avaliador:
+  A função carrega os dados do arquivo recebido como parâmetro
+  A função retorna a quantidade correta de valores
+  A função retorna os valores corretos
+"""
+
+
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    data_jobs = read(path)
+    industries = set()
+    for job in data_jobs:
+        if job["industry"] != "":
+            industries.add(job["industry"])
+    return industries
 
 
 def filter_by_industry(jobs, industry):

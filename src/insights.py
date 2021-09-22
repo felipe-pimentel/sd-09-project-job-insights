@@ -115,13 +115,12 @@ def get_max_salary(path):
     max_salary = 0
 
     for row in dictionary:
-        if row["max_salary"] != "":
-            try:
-                if int(row["max_salary"]) > max_salary:
-                    # print(salary)
-                    max_salary = int(row["max_salary"])
-            except ValueError:
-                print(row["max_salary"])
+        try:
+            if int(row["max_salary"]) > max_salary:
+                # print(salary)
+                max_salary = int(row["max_salary"])
+        except ValueError:
+            print(row["max_salary"])
 
     return max_salary
 
@@ -145,7 +144,17 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
+    dictionary = read(path)
+    min_salaries = []
+
+    for row in dictionary:
+        try:
+            if int(row["min_salary"]) != "":
+                min_salaries.append(int(row["min_salary"]))
+        except ValueError:
+            print(row["min_salary"])
+
+    return min(min_salaries)
 
 
 def matches_salary_range(job, salary):

@@ -1,4 +1,10 @@
-from jobs import read
+import csv
+
+
+def read(path):
+    with open(path, mode="r") as file:
+        jobs_dictionary = list(csv.DictReader(file))
+        return jobs_dictionary
 
 
 def get_unique_job_types(path):
@@ -28,12 +34,12 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-
     data_dictionary = read(path)
     industry_types = set()
     for industry in data_dictionary:
         industry_types.add(industry["industry_types"])
     return [*industry_types]
+    # return []
 
 
 def filter_by_industry(jobs, industry):

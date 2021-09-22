@@ -121,40 +121,30 @@ def get_min_salary(path):
     return min_salarary
 
 
+# refatorado
 def matches_salary_range(job, salary):
-    if not ("min_salary" in job and "max_salary" in job):
-        raise ValueError(
-            "job['min_salary'] or job['max_salary'] doesn't exists"
-        )
-    elif not (
-        type(job["min_salary"]) is int or type(job["max_salary"]) is int
+    if (
+        "min_salary" not in job
+        or "max_salary" not in job
+        or type(job["min_salary"]) is not int
+        or type(job["max_salary"]) is not int
+        or type(salary) is not int
+        or job["max_salary"] < job["min_salary"]
     ):
-        raise ValueError(
-            "job['min_salary'] or job['max_salary'] aren't valid integers"
-        )
-    elif job["min_salary"] > job["max_salary"]:
-        raise ValueError(
-            "job['min_salary'] is greather than job['max_salary']"
-        )
-    elif not (type(salary) is int):
-        raise ValueError("salary isn't a valid integer")
-    else:
-        return job["min_salary"] <= salary <= job["max_salary"]
+        raise ValueError("Erro na validação dos dados")
+    # print(job["min_salary"] <= salary <= job["max_salary"])
+    return job["min_salary"] <= salary <= job["max_salary"]
 
 
 def filter_by_salary_range(jobs, salary):
-    """Filters a list of jobs by salary range
 
-    Parameters
-    ----------
-    jobs : list
-        The jobs to be filtered
-    salary : int
-        The salary to be used as filter
+    salary_range = []
 
-    Returns
-    -------
-    list
-        Jobs whose salary range contains `salary`
-    """
-    return []
+    for el in jobs:
+        try:
+            if matches_salary_range(el, salary):
+                salary_range.append(el)
+        except ValueError:
+            ("Erro")
+
+    return salary_range

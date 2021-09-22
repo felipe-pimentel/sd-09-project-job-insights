@@ -21,7 +21,7 @@ def get_unique_job_types(path):
 
     jobs_type = set()
     for row in dictionary:
-        jobs_type.add(row['job_type'])
+        jobs_type.add(row["job_type"])
 
     return jobs_type
 
@@ -64,7 +64,17 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    return []
+
+    dictionary = read(path)
+    industries = set()
+    for row in dictionary:
+        if row["industry"] != "":
+            industries.add(row["industry"])
+
+    return industries
+
+
+# print(len(get_unique_industries("jobs.csv")))
 
 
 def filter_by_industry(jobs, industry):

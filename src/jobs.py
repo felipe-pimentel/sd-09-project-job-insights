@@ -11,7 +11,7 @@ def read(path):
     result = []
     for row in data:
         list = {}
-        for index in range(len(headers) - 1):
+        for index in range(len(headers)):
             key = headers[index]
             value = row[index]
             list[key] = value

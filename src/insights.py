@@ -1,4 +1,4 @@
-from jobs import read
+from .jobs import read
 
 
 def get_unique_job_types(path):
@@ -21,7 +21,8 @@ def get_unique_industries(path):
     jobs_list = read(path)
     industries = set()
     for job in jobs_list:
-        industries.add(job["industry"])
+        if (job["industry"] != ""):
+            industries.add(job["industry"])
     return industries
 
 
@@ -37,24 +38,25 @@ def get_max_salary(path):
     jobs = read(path)
     max_salaries = []
     for job in jobs:
-        if job["max_salary"] != "":
+        if job["max_salary"] != "" and job["max_salary"] != 'invalid':
             max_salaries.append(int(job["max_salary"]))
     return max(max_salaries)
 
 
-print("max_salary:", get_max_salary("src/jobs.csv"))
+# print("max_salary:", get_max_salary("src/jobs.csv"))
+# print("max_salary:", get_max_salary("tests/mocks/jobs_with_salaries.csv"))
 
 
 def get_min_salary(path):
     jobs = read(path)
     min_salaries = set()
     for job in jobs:
-        if job["min_salary"] != "":
+        if job["min_salary"] != "" and job["max_salary"] != 'invalid':
             min_salaries.add(int(job["min_salary"]))
     return min(min_salaries)
 
 
-print("min_salary:", get_min_salary("src/jobs.csv"))
+# print("min_salary:", get_min_salary("src/jobs.csv"))
 
 
 def matches_salary_range(job, salary):
@@ -69,7 +71,7 @@ def matches_salary_range(job, salary):
         return ValueError
 
 
-job = read("src/jobs.csv")[100]
+# job = read("src/jobs.csv")[100]
 # print(matches_salary_range({
 #     "min_salary": 100000,
 #     "max_salary": 150000

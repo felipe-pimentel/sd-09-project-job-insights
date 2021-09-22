@@ -1,6 +1,4 @@
-from markdown import markdown
-from flask import Flask, Blueprint, render_template, request
-
+from flask import Flask, render_template, request
 from jobs import read
 from insights import (
     get_unique_industries,
@@ -13,17 +11,15 @@ from insights import (
 )
 from more_insights import slice_jobs, get_int_from_args, build_jobs_urls
 
-bp = Blueprint("client", __name__, template_folder="templates")
+
+app = Flask(__name__)
 
 
-@bp.route("/")
-def index():
-    with open("README.md", encoding="UTF-8") as file:
-        md = markdown(file.read())
-    return render_template("index.jinja2", md=md)
+@app.route("/")
+def hello_world():
+    return "<p>Hello World!</p>"
 
-
-@bp.route("/jobs")
+@app.route("/jobs")
 def list_jobs():
     first_job = get_int_from_args("first_job", 0)
     amount = get_int_from_args("amount", 20)
@@ -57,7 +53,3 @@ def list_jobs():
     }
 
     return render_template("list_jobs.jinja2", ctx=ctx)
-
-
-def init_app(app: Flask):
-    app.register_blueprint(bp)

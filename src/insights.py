@@ -46,7 +46,12 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    return []
+    """ jobs_list = []
+    for job in jobs:
+        if job['job_type'] == job_type:
+            jobs_list.append(job['job_type']) """
+
+    return [job for job in jobs if job['job_type'] == job_type] # pythoniano
 
 
 def get_unique_industries(path):
@@ -117,7 +122,6 @@ def get_max_salary(path):
     for row in dictionary:
         try:
             if int(row["max_salary"]) > max_salary:
-                # print(salary)
                 max_salary = int(row["max_salary"])
         except ValueError:
             print(row["max_salary"])

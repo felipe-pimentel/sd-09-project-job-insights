@@ -7,7 +7,6 @@ def get_unique_job_types(path):
     ----------
     path : str
         Must be passed to `read`
-
     Returns
     -------
     list

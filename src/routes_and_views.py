@@ -1,8 +1,8 @@
 from markdown import markdown
 from flask import Flask, Blueprint, render_template, request
 
-from jobs import read
-from insights import (
+from src.jobs import read
+from src.insights import (
     get_unique_industries,
     get_unique_job_types,
     filter_by_salary_range,
@@ -11,7 +11,7 @@ from insights import (
     get_min_salary,
     get_max_salary,
 )
-from more_insights import slice_jobs, get_int_from_args, build_jobs_urls
+from src.more_insights import slice_jobs, get_int_from_args, build_jobs_urls
 
 bp = Blueprint("client", __name__, template_folder="templates")
 

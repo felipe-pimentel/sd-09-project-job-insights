@@ -353,7 +353,7 @@ Os dados apresentam faixas salariais para cada emprego exibido. Vamos agora enco
 ##### 5 - Implemente a função `get_min_salary`
 local: `src/insights.py`
 
-Os dados apresentam faixas salariais para cada emprego exibido. Vamos agora encontrar o maior valor de todas as faixas.
+Os dados apresentam faixas salariais para cada emprego exibido. Vamos agora encontrar o menor valor de todas as faixas.
 
 - A função deve obter os dados da mesma forma que o requisito 2.
 - A função deve ignorar os valores ausentes.
@@ -371,7 +371,7 @@ Os empregos estão listados em um aplicativo web. Para permitir que a pessoa usu
 
 - A função deve receber uma lista de dicionários `jobs` como primeiro parâmetro.
 - A função deve receber uma string `job_type` como segundo parâmetro.
-- A função deve retornar uma lista com todos os empregos onde a coluna `job_type` corresponde ao parâmetro `job_type`.
+- A função deve retornar uma lista com todos os empregos onde a coluna `jobs` corresponde ao parâmetro `job_type`.
 
 **🤖 O que será verificado pelo avaliador:**
 
@@ -387,14 +387,14 @@ Do mesmo modo, o aplicativo precisa permitir uma filtragem por indústria. Vamos
 
 - A função deve receber uma lista de dicionários `jobs` como primeiro parâmetro.
 - A função deve receber uma string `industry` como segundo parâmetro.
-- A função deve retornar uma lista de dicionários com todos os empregos onde a coluna `industry` corresponde ao parâmetro `industry`.
+- A função deve retornar uma lista de dicionários com todos os empregos onde a coluna `jobs` corresponde ao parâmetro `industry`.
 
 **🤖 O que será verificado pelo avaliador:**
 
 - A função retorna a quantidade correta de valores
 - A função retorna os valores corretos
 - A função retorna os valores na ordem correta
-- A função retorna uma lista vazia para `job_types` ausentes nos `jobs` recebidos
+- A função retorna uma lista vazia para `industry` ausentes nos `jobs` recebidos
 
 ##### 8 - Implemente a função `matches_salary_range`
 local: `src/insights.py`

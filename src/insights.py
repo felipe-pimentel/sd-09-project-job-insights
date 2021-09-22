@@ -16,13 +16,10 @@ def get_unique_job_types(path):
         List of unique job types
     """
 
-    def check_jobs(job):
-        if job != job:
-            return True
-        return False
-
-    unique_jobs = list(filter(check_jobs, read(path)))
-    print(unique_jobs)
+    all_jobs = read(path)
+    unique_jobs = set()
+    for job in all_jobs:
+        unique_jobs.add(job["job_type"])
 
     return unique_jobs
 

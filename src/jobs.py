@@ -20,6 +20,3 @@ def read(path):
         lista = list(csv.DictReader(file))
 
     return lista
-
-
-read("src/jobs.csv")

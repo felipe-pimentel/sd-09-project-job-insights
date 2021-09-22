@@ -1,19 +1,32 @@
+from src.jobs import read
+
+
+"""
+2 - Implemente a função get_unique_job_types
+local: src/insights.py
+
+Agora que temos como carregar os dados, podemos começar a extrair informação
+deles. Primeiro, vamos identificar quais tipos de empregos existem.
+  A função deve receber o path do arquivo csv com os dados.
+  A função deve invocar a função jobs.read com o path recebido para obter os
+  dados.
+  A função deve retornar uma lista de valores únicos presentes na coluna
+  job_type.
+
+O que será verificado pelo avaliador:
+  A função carrega os dados do arquivo recebido como parâmetro
+  A função retorna a quantidade correta de valores
+  A função retorna os valores corretos
+  A função desconsidera valores vazios
+"""
+
+
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    return []
+    data_jobs = read(path)
+    jobs_types = set()
+    for job in data_jobs:
+        jobs_types.add(job["job_type"])
+    return jobs_types
 
 
 def filter_by_job_type(jobs, job_type):

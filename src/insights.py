@@ -3,23 +3,12 @@ import csv
 
 def get_unique_job_types(path):
     with open(path) as file:
-        content = csv.reader(file)
-        print(content)
-    """Checks all different job types and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    return []
+        content = csv.DictReader(file, delimiter=",", quotechar='"')
+        unique_jobs = []
+        for job in content:
+            if job["job_type"] not in unique_jobs:
+                unique_jobs.append(job["job_type"])
+    return unique_jobs
 
 
 def filter_by_job_type(jobs, job_type):

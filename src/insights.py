@@ -19,7 +19,7 @@ def get_unique_industries(path):
     jobs_dictionary = read(path)
     industry_types = set()
     for industry in jobs_dictionary:
-        industry_types.add(industry["industry_types"])
+        industry_types.add(industry["industry"])
     return [*industry_types]
 
 

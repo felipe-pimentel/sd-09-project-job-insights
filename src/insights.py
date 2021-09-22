@@ -36,9 +36,11 @@ def get_unique_industries(path):
     jobs_list = src.jobs.read(path)
     result = set()
     for job in jobs_list:
-        for industry_type in job["industry"].split(","):
-            if industry_type != "":
-                result.add(industry_type)
+        try:
+            if job["industry"] != "":
+                result.add(job["industry"])
+        except ValueError:
+            print("Campo inválido")
     print(result)
     return result
 

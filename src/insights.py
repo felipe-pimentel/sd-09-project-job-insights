@@ -61,7 +61,23 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    return []
+    all_industries_list = read(path)
+    industries_type = set()
+    for industry_type in all_industries_list:
+        industries_type.add(
+            all_industries_list
+            [
+                all_industries_list.index(industry_type)
+            ]
+            [
+                "industry"
+            ]
+        )
+
+    return industries_type
+
+
+# get_unique_industries("tests/mocks/jobs_with_industries.csv")
 
 
 def filter_by_industry(jobs, industry):

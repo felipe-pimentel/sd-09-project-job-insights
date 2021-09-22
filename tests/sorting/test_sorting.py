@@ -1,3 +1,6 @@
+# Para execução desse requisito tirei dúvidas com os PRs
+# do Tiago Yoneda e Layo Kaminski  
+
 from src.sorting import sort_by
 
 

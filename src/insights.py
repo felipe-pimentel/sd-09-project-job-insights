@@ -1,4 +1,10 @@
+import csv
+
+
 def get_unique_job_types(path):
+    with open(path) as file:
+        content = csv.reader(file)
+        print(content)
     """Checks all different job types and returns a list of them
 
     Must call `read`

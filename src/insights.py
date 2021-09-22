@@ -110,7 +110,24 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+
+    dictionary = read(path)
+    max_salary = 0
+
+    for row in dictionary:
+        if row["max_salary"] != "":
+            try:
+                if int(row["max_salary"]) > max_salary:
+                    # print(salary)
+                    max_salary = int(row["max_salary"])
+            except ValueError:
+                print(row["max_salary"])
+
+    return max_salary
+
+
+# print(get_max_salary("jobs.csv"))
+# get_max_salary("jobs.csv")
 
 
 def get_min_salary(path):

@@ -1,3 +1,4 @@
+import csv
 from functools import lru_cache
 
 
@@ -15,4 +16,11 @@ def read(path):
     list
         List of rows as dicts
     """
-    return []
+    all_jobs = []
+
+    with open(path) as file:
+        data = csv.DictReader(file, delimiter=",", quotechar='"')
+        for info_job in data:
+            all_jobs.append(info_job)
+
+    return all_jobs

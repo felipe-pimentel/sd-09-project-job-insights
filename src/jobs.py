@@ -17,6 +17,5 @@ def read(path):
         List of rows as dicts
     """
     with open(f'{path}', 'r') as file:
-        read = csv.DictReader(file, delimiter=",")
-        for row in read:
-            return [row]
+        data = list(csv.DictReader(file, delimiter=",", quotechar='"'))
+        return data

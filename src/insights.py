@@ -35,7 +35,8 @@ def filter_by_job_type(jobs, job_type):
             if job["job_type"] == job_type:
                 result.append(job)
         except TypeError:
-            print("Campo inválido")
+            # print("Campo inválido")
+            pass
     return result
 
 
@@ -47,8 +48,8 @@ def get_unique_industries(path):
             if job["industry"] != "":
                 result.add(job["industry"])
         except ValueError:
-            print("Campo inválido")
-    print(result)
+            # print("Campo inválido")
+            pass
     return result
 
 
@@ -67,7 +68,15 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
-    return []
+    result = []
+    for job in jobs:
+        try:
+            if job["industry"] == industry:
+                result.append(job)
+        except TypeError:
+            # print("Campo inválido")
+            pass
+    return result
 
 
 def get_max_salary(path):
@@ -78,7 +87,8 @@ def get_max_salary(path):
             if job["max_salary"] != "":
                 result.add(int(job["max_salary"]))
         except ValueError:
-            print('Campo inválido')
+            # print('Campo inválido')
+            pass
     return max(result)
 
 

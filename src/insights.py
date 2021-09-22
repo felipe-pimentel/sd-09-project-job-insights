@@ -62,16 +62,4 @@ def matches_salary_range(job, salary):
 
 
 def filter_by_salary_range(jobs, salary):
-    filter_by_salary = set()
-    if not ("min_salary" in jobs.keys() and "max_salary" in jobs.keys()):
-        raise ValueError("min_salary and max salary must exist")
-    if not (
-        isinstance(jobs["min_salary"], int)
-        and isinstance(jobs["max_salary"], int)
-    ):
-        raise ValueError("min_salary and max_salary must be numeric values")
-    if not (isinstance(salary, int)):
-        raise ValueError("salary must be numeric values")
-    if (jobs["min_salary"] > jobs["max_salary"]):
-        raise ValueError("max_salary must be bigger than min_salary")
     pass

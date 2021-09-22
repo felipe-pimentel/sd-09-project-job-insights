@@ -4,18 +4,18 @@ from datetime import date
 
 def max_salary_key(job):
     """
-    Gets max_salary as a sorting key.
+    Gets max_salary as a sorting key
 
-    Missing information is treated as the lowest possible value.
+    Missing information is treated as the lowest possible value
 
     Parameters
     ----------
     job : dict
-        Dict represeting a job from the dataset.
+        Dict represeting a job from the dataset
 
     Returns
     -------
-    Job's max salary as an int, or -infinite.
+    Job's max salary as an int, or -infinite
     """
     try:
         return int(job["max_salary"])

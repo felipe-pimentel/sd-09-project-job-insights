@@ -11,21 +11,6 @@ def get_unique_job_types(path):
 
 def filter_by_job_type(jobs, job_type):
     return [row for row in jobs if row["job_type"] == job_type]
-    """Filters a list of jobs by job_type
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
 
 
 def get_unique_industries(path):
@@ -38,6 +23,7 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
+    return [row for row in jobs if row["job_type"] == industry]
     """Filters a list of jobs by industry
 
     Parameters

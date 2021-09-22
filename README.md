@@ -135,7 +135,7 @@ Na estrutura deste _template_, você deve implementar as funções necessárias.
 
 ---
 
-### Antes de começar a desenvolver
+### Antes de começar a desenvolver ✅
 
 1. Clone o repositório
 

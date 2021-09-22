@@ -62,20 +62,16 @@ def get_min_salary(path):
 def matches_salary_range(job, salary):
     try:
         if int(job["min_salary"]) > int(job["max_salary"]):
-            return ValueError
-        if int(job["max_salary"]) > salary > int(job["min_salary"]):
+            raise ValueError
+        elif int(job["max_salary"]) >= salary >= int(job["min_salary"]):
             return True
         else:
             return False
-    except (ValueError, TypeError):
-        return ValueError
+    except (ValueError, TypeError, KeyError):
+        raise ValueError
 
 
-# job = read("src/jobs.csv")[100]
-# print(matches_salary_range({
-#     "min_salary": 100000,
-#     "max_salary": 150000
-#  }, 125000))
+job = read("src/jobs.csv")[100]
 
 
 def filter_by_salary_range(jobs, salary):
@@ -85,7 +81,6 @@ def filter_by_salary_range(jobs, salary):
 
     filtered_jobs = []
     for job in jobs_with_validy_salary:
-        print(matches_salary_range(job, salary))
         if matches_salary_range(job, salary) is True:
             filtered_jobs.append(job)
     return filtered_jobs

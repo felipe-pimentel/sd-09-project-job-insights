@@ -1,8 +1,10 @@
-from src.jobs import read
+def filter_by_salary_range(jobs, salary):
+    print(matches_salary_range(jobs, salary))
+    if matches_salary_range(jobs, salary):
+        filtered = [
+            job
+            for job in jobs if job["min_salary"] <= salary <= job["max_salary"]
+        ]
+    print("filtered ====", filtered)
 
-
-def get_unique_job_types(path):
-
-    jobs = read(path)
-    print(jobs)
-    return []
+    return filtered

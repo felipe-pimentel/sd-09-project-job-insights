@@ -1,5 +1,6 @@
 from src.sorting import sort_by
 
+
 def test_sort_by_criteria():
     job_1 = {
         "job_name": "Developer",
@@ -29,11 +30,12 @@ def test_sort_by_criteria():
     job_list = [job_1, job_2, job_3, job_4]
 
     min_salary_asc_sort = [job_3, job_2, job_1, job_4]
-    max_salary_desc_sort = [job_4, job_2, job_1, job_3]  
-    date_posted_desc_sort = [job_1, job_3, job_4, job_2]  
+    max_salary_desc_sort = [job_4, job_2, job_1, job_3]
+    date_posted_desc_sort = [job_1, job_3, job_4, job_2]
 
     criteria = ["min_salary", "max_salary", "date_posted"]
-    expected = [min_salary_asc_sort, max_salary_desc_sort, date_posted_desc_sort]
+    expected = [min_salary_asc_sort, max_salary_desc_sort,
+                date_posted_desc_sort]
 
     for index in range(len(criteria)):
         sort_by(job_list, criteria[index])

@@ -1,12 +1,12 @@
 from src.jobs import read
 
+
 def get_unique_job_types(path):
     jobs_list = read(path)
     job_types = set()
     for job in jobs_list:
         job_types.add(job["job_type"])
     return job_types
-
 
 
 def filter_by_job_type(jobs, job_type):
@@ -46,8 +46,7 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
-    if not (isinstance(salary, int)
-    ):
+    if not (isinstance(salary, int)):
         raise ValueError("invalid salary")
     if not (
         "min_salary" in job.keys()

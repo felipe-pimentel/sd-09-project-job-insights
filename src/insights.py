@@ -2,6 +2,7 @@ from src.jobs import read
 
 
 def get_unique_job_types(path):
+    #  REQ 02
     """Checks all different job types and returns a list of them
 
     Must call `read`
@@ -24,6 +25,7 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
+    #  REQ 06
     """Filters a list of jobs by job_type
 
     Parameters
@@ -44,6 +46,7 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
+    #  REQ 03
     """Checks all different industries and returns a list of them
 
     Must call `read`

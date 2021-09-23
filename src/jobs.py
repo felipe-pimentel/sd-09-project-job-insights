@@ -10,6 +10,7 @@ def read(path):
     path : str
         Full path to file
 
+
     Returns
     -------
     list

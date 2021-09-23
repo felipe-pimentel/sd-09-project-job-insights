@@ -41,7 +41,7 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    return []
+    return [job for job in jobs if job.get("job_type") == job_type]
 
 
 def get_unique_industries(path):
@@ -78,7 +78,7 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
-    return []
+    return [job for job in jobs if job.get("industry") == industry]
 
 
 def get_max_or_min_salary_from_file(path, get_minimum=False):
@@ -87,6 +87,7 @@ def get_max_or_min_salary_from_file(path, get_minimum=False):
         else ("max_salary", max)
     salaries = get_unique_nonempty_entry_property(property, jobs_data)
     return callback([int(salary) for salary in salaries if salary.isdigit()])
+
 
 def get_max_salary(path):
     """Get the maximum salary of all jobs

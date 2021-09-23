@@ -1,6 +1,7 @@
 from flask import Flask
 from . import routes_and_views
 
+# fazendo projeto
 
 def create_app() -> Flask:
     app = Flask(__name__)

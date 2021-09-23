@@ -110,22 +110,31 @@ def filter_by_industry(jobs, industry):
     return []
 
 
+"""
+4 - Implemente a função get_max_salary
+local: src/insights.py
+
+Os dados apresentam faixas salariais para cada emprego exibido. Vamos agora
+encontrar o maior valor de todas as faixas.
+    A função deve obter os dados da mesma forma que o requisito 2.
+    A função deve ignorar os valores ausentes.
+    A função deve retornar um valor inteiro com o maior salário presente na
+    coluna max_salary.
+
+O que será verificado pelo avaliador:
+    A função carrega os dados do arquivo recebido como parâmetro
+    A função retorna o valor correto
+"""
+
+
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    data_jobs = read(path)
+    salaries = set()
+    for job in data_jobs:
+        if job["max_salary"].isdigit():
+            salaries.add(job["max_salary"])
+    greather_salary = int(max(salaries, key=int))
+    return greather_salary
 
 
 def get_min_salary(path):

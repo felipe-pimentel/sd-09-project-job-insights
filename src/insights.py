@@ -38,7 +38,9 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    return []
+    # EXEMPLO 02 - filter tem 2 argumentos (função - iterável)
+    # https://www.programiz.com/python-programming/methods/built-in/filter
+    return list(filter(lambda job: job["job_type"] == job_type, jobs))
 
 
 def get_unique_industries(path):

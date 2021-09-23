@@ -5,12 +5,10 @@ def get_unique_job_types(path):
     returned_jobs = read(path)
     job_types = []
     for job in returned_jobs:
-        if job["job_type"] == "":
-            return
-        else:
-            job_types.append(job["job_type"])
-    job_types = list(dict.fromkeys(job_types))  # filtra os valores duplicados
-    return job_types
+        job_types.append(job["job_type"])
+    filtered = filter(lambda x: x != '', job_types)
+    filtered = list(dict.fromkeys(filtered))
+    return filtered
 
 
 def filter_by_job_type(jobs, job_type):
@@ -32,21 +30,16 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
+    returned_jobs = read(path)
+    industries = []
+    for job in returned_jobs:
+        industries.append(job["industry"])
+    filtered = filter(lambda x: x != '', industries)
+    filtered = list(dict.fromkeys(filtered))
+    return filtered
 
-    Must call `read`
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+# print(get_unique_industries("src/jobs.csv"))
 
 
 def filter_by_industry(jobs, industry):

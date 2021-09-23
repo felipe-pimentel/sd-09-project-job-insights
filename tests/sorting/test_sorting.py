@@ -1,6 +1,6 @@
-import pytest import fixture
+# from pytest import fixture
 from src.sorting import sort_by
-
+import pytest
 
 @pytest.fixture
 def db_test():
@@ -28,4 +28,3 @@ def test_sort_by_criteria(db_test):
         "2021-02-20",
         "2021-01-10",
     ]
-    

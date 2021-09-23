@@ -8,5 +8,10 @@
     "python.formatting.blackArgs": [
         "-l 79"
     ],
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "black",
+    "workbench.colorCustomizations": {
+        "activityBar.background": "#152D55",
+        "titleBar.activeBackground": "#1E3F76",
+        "titleBar.activeForeground": "#F7FAFD"
+    }
 }

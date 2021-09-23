@@ -1,6 +1,12 @@
 from src.jobs import read
 
 
+def get_unique_nonempty_entry_property(property, list):
+    return {nonempty for nonempty in
+            (entry.get(property) for entry in list)
+            if nonempty}
+
+
 def get_unique_job_types(path):
     """Checks all different job types and returns a list of them
 
@@ -17,7 +23,7 @@ def get_unique_job_types(path):
         List of unique job types
     """
     jobs_data = read(path)
-    return {i["job_type"] for i in jobs_data}
+    return get_unique_nonempty_entry_property("job_type", jobs_data)
 
 
 def filter_by_job_type(jobs, job_type):
@@ -53,7 +59,8 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    return []
+    jobs_data = read(path)
+    return get_unique_nonempty_entry_property("industry", jobs_data)
 
 
 def filter_by_industry(jobs, industry):

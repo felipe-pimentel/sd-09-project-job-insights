@@ -18,6 +18,7 @@ def get_unique_job_types(path):
     """
 
     all_jobs_list = read(path)
+
     jobs_type = set()
     for job_type in all_jobs_list:
         jobs_type.add(all_jobs_list[all_jobs_list.index(job_type)]["type"])
@@ -62,6 +63,7 @@ def get_unique_industries(path):
         List of unique industries
     """
     all_industries_list = read(path)
+
     industries_type = set()
     for industry_type in all_industries_list:
         industries_type.add(
@@ -113,7 +115,15 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
+    # all_salary_list = read(path)
+
+    # for job in all_salary_list:
+    #     if (job["max_salary"] != "invalid" and job["max_salary"] != ""):
+
     pass
+
+
+# get_max_salary("tests/mocks/jobs_with_salaries.csv")
 
 
 def get_min_salary(path):

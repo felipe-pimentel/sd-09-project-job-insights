@@ -14,9 +14,9 @@ def min_salary_mock():
 @pytest.fixture
 def max_salary_mock():
     return [{
-        "min_salary": "2000"
+        "max_salary": "2000"
     }, {
-        "min_salary": "1000"
+        "max_salary": "1000"
     }]
 
 
@@ -30,9 +30,9 @@ def min_salary_assert():
 
 def max_salary_assert():
     return [{
-        "min_salary": "2000"
+        "max_salary": "2000"
     }, {
-        "min_salary": "1000"
+        "max_salary": "1000"
     }]
 
 

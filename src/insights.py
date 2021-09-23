@@ -30,39 +30,32 @@ def get_unique_job_types(path):
 
 
 """
-3 - Implemente a função get_unique_industries
+6 - Implemente a função filter_by_job_type
 local: src/insights.py
 
-Da mesma forma, agora iremos identificar quais indústrias estão representadas
-nesse conjunto de dados.
-  A função deve obter os dados da mesma forma que o requisito 2.
-  A função deve retornar uma lista de valores únicos presentes na coluna
-  industry.
-  A função desconsidera valores vazios
+Os empregos estão listados em um aplicativo web. Para permitir que a pessoa
+usuária possa filtrar os empregos por tipo de emprego, vamos precisar
+implementar esse filtro.
+    A função deve receber uma lista de dicionários jobs como primeiro
+    parâmetro.
+    A função deve receber uma string job_type como segundo parâmetro.
+    A função deve retornar uma lista com todos os empregos onde a coluna jobs
+    corresponde ao parâmetro job_type.
 
 O que será verificado pelo avaliador:
-  A função carrega os dados do arquivo recebido como parâmetro
-  A função retorna a quantidade correta de valores
-  A função retorna os valores corretos
+    A função retorna a quantidade correta de valores
+    A função retorna os valores corretos
+    A função retorna os valores na ordem correta
+    A função retorna uma lista vazia para job_types ausentes nos jobs recebidos
 """
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    job_list_by_type = []
+    for job in jobs:
+        if job["job_type"] == job_type:
+            job_list_by_type.append(job)
+    return job_list_by_type
 
 
 """

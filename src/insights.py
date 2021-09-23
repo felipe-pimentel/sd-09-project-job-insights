@@ -65,7 +65,6 @@ def get_unique_industries(path):
         List of unique industries
     """
     jobs_list = read(path)
-    # print(jobs_list[0])
 
     unique_industries = set()
 
@@ -91,7 +90,10 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
-    return []
+
+    filtered_industries = [job for job in jobs if job["industry"] == industry]
+    
+    return filtered_industries
 
 
 def get_max_salary(path):

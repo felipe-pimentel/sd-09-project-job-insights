@@ -36,7 +36,7 @@ def max_salary_assert():
     }]
 
 
-def test_sorting_by_criteria(min_salary_mock, max_salary_mock):
+def test_sort_by_criteria(min_salary_mock, max_salary_mock):
     sort_by(min_salary_mock, "min_salary")
     assert min_salary_assert() == min_salary_mock
 

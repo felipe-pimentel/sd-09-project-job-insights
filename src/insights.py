@@ -218,19 +218,38 @@ def matches_salary_range(job, salary):
     return job["min_salary"] <= salary <= job["max_salary"]
 
 
+"""
+9 - Implemente a função filter_by_salary_range
+local: src/insights.py
+
+Agora vamos implementar o filtro propriamente dito. Para esta filtragem,
+podemos usar a função auxiliar implementada no requisito anterior -- tomando o
+cuidado de descartar os empregos que apresentarem faixas salariais inválidas.
+    A função deve receber uma lista de dicionários jobs como primeiro
+    parâmetro.
+    A função deve receber um inteiro salary como segundo parâmetro.
+    A função deve ignorar os empregos com valores inválidos para min_salary ou
+    max_salary.
+    A função deve retornar uma lista com todos os empregos onde o salário
+    salary estiver entre os valores da coluna min_salary e max_salary.
+
+O que será verificado pelo avaliador:
+    A função retorna a quantidade correta de valores
+    A função retorna os valores corretos
+    A função retorna os valores na ordem correta
+    Empregos onde as chaves min_salary ou max_salary tiverem valores não
+    numéricos devem ser ignorados
+    Empregos onde o valor de min_salary for maior que o valor de max_salary
+    devem ser ignorados
+"""
+
+
 def filter_by_salary_range(jobs, salary):
-    """Filters a list of jobs by salary range
-
-    Parameters
-    ----------
-    jobs : list
-        The jobs to be filtered
-    salary : int
-        The salary to be used as filter
-
-    Returns
-    -------
-    list
-        Jobs whose salary range contains `salary`
-    """
-    return []
+    list_jobs_salary_match = []
+    for job in jobs:
+        try:
+            if matches_salary_range(job, salary):
+                list_jobs_salary_match.append(job)
+        except ValueError:
+            pass
+    return list_jobs_salary_match

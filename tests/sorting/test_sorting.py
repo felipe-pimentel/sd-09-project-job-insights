@@ -1,4 +1,4 @@
-import pytest
+import pytest import fixture
 from src.sorting import sort_by
 
 
@@ -9,6 +9,7 @@ def db_test():
         {"min_salary": 3000, "max_salary": 4500, "date_posted": "2021-02-20"},
         {"min_salary": 5000, "max_salary": 7500, "date_posted": "2021-03-30"},
     ]
+
 
 def test_sort_by_criteria(db_test):
     # print(type(db_test))
@@ -27,3 +28,4 @@ def test_sort_by_criteria(db_test):
         "2021-02-20",
         "2021-01-10",
     ]
+    

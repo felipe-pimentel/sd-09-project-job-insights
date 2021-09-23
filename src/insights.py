@@ -125,6 +125,11 @@ def get_min_salary(path):
     return get_max_or_min_salary_from_file(path, get_minimum=True)
 
 
+def validate_salaries(min_salary, max_salary):
+    return type(min_salary) == int and type(max_salary) == int \
+        and min_salary <= max_salary
+
+
 def matches_salary_range(job, salary):
     """Checks if a given salary is in the salary range of a given job
 
@@ -148,7 +153,23 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    pass
+    min_salary = job.get("min_salary")
+    max_salary = job.get("max_salary")
+
+    if not validate_salaries(min_salary, max_salary):
+        raise ValueError("Invalid salary value(s)")
+
+    return int(min_salary) <= salary <= int(max_salary)
+
+
+def handle_invalid_values(*args, **kwargs):
+    callback = kwargs.get("callback")
+    if not callback:
+        raise Exception("Must pass a explict callback parameter")
+    try:
+        return callback(*args)
+    except ValueError:
+        return False
 
 
 def filter_by_salary_range(jobs, salary):
@@ -166,4 +187,8 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return []
+    if not type(salary) == int:
+        return []
+    return [job for job in jobs
+            if handle_invalid_values(
+                job, salary, callback=matches_salary_range)]

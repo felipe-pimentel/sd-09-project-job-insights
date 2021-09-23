@@ -12,6 +12,8 @@ from .insights import (
     get_max_salary,
 )
 from .more_insights import slice_jobs, get_int_from_args, build_jobs_urls
+from .more_insights import get_job
+# line15 => i didnt found another clean or pretty way to do this (lint issue)
 
 bp = Blueprint("client", __name__, template_folder="templates")
 
@@ -57,6 +59,16 @@ def list_jobs():
     }
 
     return render_template("list_jobs.jinja2", ctx=ctx)
+
+
+@bp.route("job/<index>")
+def job_by_index(index):
+    # path called liked line 34
+    jobs = read(path="src/jobs.csv")
+    # call the funcion at line9 - of 'more insights'
+    job_found = get_job(jobs, index)
+    # render the template with jinja
+    return render_template("job_by_index.jinja2", job_by_index=job_found)
 
 
 def init_app(app: Flask):

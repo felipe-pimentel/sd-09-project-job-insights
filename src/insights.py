@@ -167,30 +167,55 @@ def get_min_salary(path):
     return smaller_salary
 
 
+"""
+8 - Implemente a função matches_salary_range
+local: src/insights.py
+
+O aplicativo vai precisar filtrar os empregos por salário também. Como uma
+função auxiliar, implemente matches_salary_range para conferir que o salário
+procurado está dentro da faixa salarial daquele emprego. Vamos aproveitar
+também para conferir se a faixa salarial faz sentido -- isto é, se o valor
+mínimo é menor que o valor máximo.
+    A função deve receber um dicionário job como primeiro parâmetro, com as
+    chaves min_salary e max_salary.
+    A função deve receber um inteiro salary como segundo parâmetro.
+    A função deve lançar um erro ValueError nos seguintes casos:
+        alguma das chaves min_salary ou max_salary estão ausentes no
+        dicionário;
+        alguma das chaves min_salary ou max_salary tem valores não-numéricos;
+        o valor de min_salary é maior que o valor de max_salary;
+        o parâmetro salary tem valores não-numéricos;
+    A função deve retornar True se o salário procurado estiver dentro da faixa
+    salarial ou False se não estiver.
+
+O que será verificado pelo avaliador:
+    A função retorna o booleano correto
+    A função lança um ValueError se o valor de min_salary for maior que o
+    valor de max_salary
+    A função lança um ValueError se as chaves min_salary ou max_salary tiverem
+    valores não numéricos
+    A função lança um ValueError se o parâmetro salary tiver valor não numérico
+    A função lança um ValueError se as chaves min_salary ou max_salary
+    estiverem ausentes no dicionário
+"""
+
+
 def matches_salary_range(job, salary):
-    """Checks if a given salary is in the salary range of a given job
+    if "max_salary" not in job.keys() or "min_salary" not in job.keys():
+        raise ValueError("min_salary or max_salary keys are missing")
 
-    Parameters
-    ----------
-    job : dict
-        The job with `min_salary` and `max_salary` keys
-    salary : int
-        The salary to check if matches with salary range of the job
+    max_salary = type(job["max_salary"]) is not int
+    min_salary = type(job["min_salary"]) is not int
 
-    Returns
-    -------
-    bool
-        True if the salary is in the salary range of the job, False otherwise
-
-    Raises
-    ------
-    ValueError
-        If `job["min_salary"]` or `job["max_salary"]` doesn't exists
-        If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
-        If `job["min_salary"]` is greather than `job["max_salary"]`
-        If `salary` isn't a valid integer
-    """
-    pass
+    if min_salary or max_salary:
+        raise ValueError("min_salary or max_salary values ​​are not integers")
+    elif job["max_salary"] < job["min_salary"]:
+        raise ValueError(
+            "the minimum salary is greater than the maximum salary"
+        )
+    elif not type(salary) is int:
+        raise ValueError("salary is not a valid integer value")
+    return job["min_salary"] <= salary <= job["max_salary"]
 
 
 def filter_by_salary_range(jobs, salary):

@@ -5,10 +5,10 @@ def get_unique_job_types(path):
     returned_jobs = read(path)
     job_types = []
     for job in returned_jobs:
-        job_types.append(job["job_type"])
-    filtered = filter(lambda x: x != '', job_types)
-    filtered = list(dict.fromkeys(filtered))
-    return filtered
+        if job["job_type"] != '':
+            job_types.append(job["job_type"])
+    job_types = list(dict.fromkeys(job_types))
+    return job_types
 
 
 def filter_by_job_type(jobs, job_type):
@@ -33,13 +33,10 @@ def get_unique_industries(path):
     returned_jobs = read(path)
     industries = []
     for job in returned_jobs:
-        industries.append(job["industry"])
-    filtered = filter(lambda x: x != '', industries)
-    filtered = list(dict.fromkeys(filtered))
-    return filtered
-
-
-# print(get_unique_industries("src/jobs.csv"))
+        if job["industry"] != '':
+            industries.append(job["industry"])
+    industries = list(dict.fromkeys(industries))
+    return industries
 
 
 def filter_by_industry(jobs, industry):
@@ -61,39 +58,33 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
+    returned_jobs = read(path)
+    salaries = []
+    for job in returned_jobs:
+        try:
+            if job["max_salary"] != '':
+                salaries.append(int(job["max_salary"]))
+        except ValueError:
+            print("Valor não convertido")
+    return max(salaries)
 
-    Must call `read`
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+print(get_max_salary("src/jobs.csv"))
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
+    returned_jobs = read(path)
+    salaries = []
+    for job in returned_jobs:
+        try:
+            if job["min_salary"] != '':
+                salaries.append(int(job["min_salary"]))
+        except ValueError:
+            print("Valor não convertido")
+    return min(salaries)
 
-    Must call `read`
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+print(get_min_salary("src/jobs.csv"))
 
 
 def matches_salary_range(job, salary):

@@ -2,6 +2,7 @@
 from src.sorting import sort_by
 import pytest
 
+
 @pytest.fixture
 def db_test():
     return [

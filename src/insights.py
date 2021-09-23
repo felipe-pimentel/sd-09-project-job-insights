@@ -96,16 +96,15 @@ def get_max_salary(path: str) -> int:
     salary_list = [
         int(job['max_salary'])
         for job in jobs
-        if job['max_salary'].isnumeric()
+        if job['max_salary'] and job['max_salary'].isnumeric()
     ]
-    print(salary_list)
 
     return max(salary_list)
 
 # print(get_max_salary('src/jobs.csv'))
 
 
-def get_min_salary(path):
+def get_min_salary(path: str) -> int:
     """Get the minimum salary of all jobs
 
     Must call `read`
@@ -120,7 +119,14 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
+    jobs = read(path)
+    salary_list = [
+        int(job['min_salary'])
+        for job in jobs
+        if job['min_salary'] and job['min_salary'].isnumeric()
+    ]
+
+    return min(salary_list)
 
 
 def matches_salary_range(job, salary):

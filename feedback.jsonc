@@ -1,12 +1,12 @@
 {
     // Coloque seu nome para sabermos de quem foi o comentário =D (opcional)
-    "nome": "",
+    "nome": "Christopher de Oliveira Moura - T9",
     // Dê uma nota ao projeto *^* (int de 0 a 10) (obrigatório)
-    "nota": ,
+    "nota": 9,
     // O que você mais gostou no projeto? (obrigatório, mas pode colocar "não há")
-    "pontos_positivos": "",
+    "pontos_positivos": "Achei muito bom ter as descrições de cada função comentada direto no código. Ajudou muito isso para fazer cada requisito",
     // O que você menos gostou no projeto? (obrigatório, mas pode colocar "não há")
-    "pontos_negativos": "",
+    "pontos_negativos": "O requisito 10 é para criar teste, fiquei muito confuso pois quando rodava um arquivo de teste específico para ver o resultado ele rodava quatro testes junto para validar o requisito ai não conseguia ver muito bem o código em que estava desenvolvendo ",
     // Comentário livre sobre o que você achou do projeto (opcional)
-    "comentário": ""
+    "comentário": "Gostei muito do projeto, consegui por em prática bastante conteúdo"
 }

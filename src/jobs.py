@@ -4,17 +4,20 @@ from functools import lru_cache
 
 @lru_cache
 def read(path):
-    with open(path, "r") as file:
-        jobs_reader = csv.reader(file, delimiter=",")
-        headers, *data = jobs_reader
-
     result = []
-    for row in data:
-        list = {}
-        for index in range(len(headers)):
-            key = headers[index]
-            value = row[index]
-            list[key] = value
-        result.append(list)
+    with open(path) as file:
+        jobs_reader = csv.DictReader(file, delimiter=",", quotechar='"')
+        for row in jobs_reader:
+            result.append(row)
 
     return result
+
+
+# print(read("src/jobs.csv"))
+
+# def test_sort_by_criteria():
+#     jobs = read("tests/mocks/jobs_with_salaries_and_date.csv")
+#     print(jobs)
+
+
+# test_sort_by_criteria()

@@ -12,21 +12,11 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    found_jobs = []
+    for job in jobs:
+        if job["job_type"] == job_type:
+            found_jobs.append(job)
+    return found_jobs
 
 
 def get_unique_industries(path):
@@ -69,9 +59,6 @@ def get_max_salary(path):
     return max(salaries)
 
 
-print(get_max_salary("src/jobs.csv"))
-
-
 def get_min_salary(path):
     returned_jobs = read(path)
     salaries = []
@@ -82,9 +69,6 @@ def get_min_salary(path):
         except ValueError:
             print("Valor não convertido")
     return min(salaries)
-
-
-print(get_min_salary("src/jobs.csv"))
 
 
 def matches_salary_range(job, salary):

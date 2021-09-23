@@ -85,22 +85,32 @@ def get_unique_industries(path):
     return industries
 
 
+"""
+7 - Implemente a função filter_by_industry
+local: src/insights.py
+
+Do mesmo modo, o aplicativo precisa permitir uma filtragem por indústria.
+Vamos precisar implementar esse filtro também.
+    A função deve receber uma lista de dicionários jobs como primeiro
+    parâmetro.
+    A função deve receber uma string industry como segundo parâmetro.
+    A função deve retornar uma lista de dicionários com todos os empregos onde
+    a coluna jobs corresponde ao parâmetro industry.
+
+O que será verificado pelo avaliador:
+    A função retorna a quantidade correta de valores
+    A função retorna os valores corretos
+    A função retorna os valores na ordem correta
+    A função retorna uma lista vazia para industry ausentes nos jobs recebidos
+"""
+
+
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
+    job_list_by_industry = []
+    for job in jobs:
+        if job["industry"] == industry:
+            job_list_by_industry.append(job)
+    return job_list_by_industry
 
 
 """

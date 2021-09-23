@@ -35,7 +35,6 @@ def test_sort_by_criteria():
     criteria = ["min_salary", "max_salary", "date_posted"]
     expected = [min_salary_sort, max_salary_sort, date_posted_sort]
 
-    # lembrar que esse método sort altera
     for index in range(len(criteria)):
-        sort_by(jobs, criteria[index])  # muda o job_list
+        sort_by(jobs, criteria[index])
         assert jobs == expected[index]

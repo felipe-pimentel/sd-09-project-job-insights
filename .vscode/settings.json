@@ -8,5 +8,6 @@
     "python.formatting.blackArgs": [
         "-l 79"
     ],
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "black",
+    "python.pythonPath": "d:\\01_Personal\\Trybe\\sd-09-project-job-insights\\venv\\Scripts\\python.exe"
 }

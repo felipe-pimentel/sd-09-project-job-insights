@@ -133,26 +133,35 @@ def get_max_salary(path):
     for job in data_jobs:
         if job["max_salary"].isdigit():
             salaries.add(job["max_salary"])
-    greather_salary = int(max(salaries, key=int))
-    return greather_salary
+    bigger_salary = int(max(salaries, key=int))
+    return bigger_salary
+
+
+"""
+5 - Implemente a função get_min_salary
+local: src/insights.py
+
+Os dados apresentam faixas salariais para cada emprego exibido. Vamos agora
+encontrar o menor valor de todas as faixas.
+    A função deve obter os dados da mesma forma que o requisito 2.
+    A função deve ignorar os valores ausentes.
+    A função deve retornar um valor inteiro com o menor salário presente na
+    coluna min_salary.
+
+O que será verificado pelo avaliador:
+    A função carrega os dados do arquivo recebido como parâmetro
+    A função retorna o valor correto
+"""
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    data_jobs = read(path)
+    salaries = set()
+    for job in data_jobs:
+        if job["min_salary"].isdigit():
+            salaries.add(job["min_salary"])
+    smaller_salary = int(min(salaries, key=int))
+    return smaller_salary
 
 
 def matches_salary_range(job, salary):

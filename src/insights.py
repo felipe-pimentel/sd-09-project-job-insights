@@ -1,17 +1,19 @@
 from src.jobs import read
+# from jobs import read
 
 
 def get_unique_job_types(path):
     job_types = read(path)
 
     jobs_unique = set()
+
     for row in job_types:
         jobs_unique.add(row["job_type"])
 
     return jobs_unique
 
 
-# print(get_unique_job_types(job_types))
+print(get_unique_job_types("src/jobs.csv"))
 
 
 def filter_by_job_type(jobs, job_type):
@@ -33,21 +35,18 @@ def filter_by_job_type(jobs, job_type):
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
+    job_industries = read(path)
 
-    Must call `read`
+    industries_unique = set()
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
+    for row in job_industries:
+        if row["industry"] != '':
+            industries_unique.add(row["industry"])
 
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    return industries_unique
+
+
+print(get_unique_industries('src/jobs.csv'))
 
 
 def filter_by_industry(jobs, industry):
@@ -69,6 +68,8 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
+
+    # PESQUISAR METODOS DO PYTHON
     """Get the maximum salary of all jobs
 
     Must call `read`

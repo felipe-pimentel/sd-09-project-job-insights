@@ -21,7 +21,7 @@ def get_unique_job_types(path: str) -> list[str]:
     return {job['job_type'] for job in jobs}
 
 
-def filter_by_job_type(jobs, job_type):
+def filter_by_job_type(jobs: list[dict], job_type: str) -> list[dict]:
     """Filters a list of jobs by job_type
 
     Parameters
@@ -36,7 +36,7 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    return []
+    return [job for job in jobs if job['job_type'] == job_type]
 
 
 def get_unique_industries(path: str) -> list[str]:
@@ -59,7 +59,7 @@ def get_unique_industries(path: str) -> list[str]:
     return {job['industry'] for job in jobs if job['industry']}
 
 
-def filter_by_industry(jobs, industry):
+def filter_by_industry(jobs: list[dict], industry: str) -> list[dict]:
     """Filters a list of jobs by industry
 
     Parameters
@@ -74,7 +74,7 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
-    return []
+    return [job for job in jobs if job['industry'] == industry]
 
 
 def get_max_salary(path: str) -> int:
@@ -129,7 +129,7 @@ def get_min_salary(path: str) -> int:
     return min(salary_list)
 
 
-def matches_salary_range(job, salary):
+def matches_salary_range(job: dict, salary: int) -> bool:
     """Checks if a given salary is in the salary range of a given job
 
     Parameters
@@ -152,10 +152,21 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    pass
+    input_check = [
+        isinstance(job.get('min_salary', ''), int),
+        isinstance(job.get('max_salary', ''), int),
+        isinstance(salary, int),
+    ]
+    if all(input_check):
+        if job['min_salary'] > job['max_salary']:
+            raise ValueError('Maximum salary must be greater or equal to the minimum salary')
+
+        return job['min_salary'] <= salary <= job['max_salary']
+    else:
+        raise ValueError('Some inconsistent value was provided')
 
 
-def filter_by_salary_range(jobs, salary):
+def filter_by_salary_range(jobs: list[dict], salary: int) -> list[dict]:
     """Filters a list of jobs by salary range
 
     Parameters
@@ -170,4 +181,12 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return []
+    jobs_match = []
+    for job in jobs:
+        try:
+            if matches_salary_range(job, salary):
+                jobs_match.append(job)
+        except ValueError:
+            pass
+
+    return jobs_match

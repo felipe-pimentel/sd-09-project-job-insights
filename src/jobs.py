@@ -12,9 +12,12 @@ def read(path):
     path : str
         Full path to file
     """
-    with open(path) as file:
-        file_reader = csv.DictReader(file, delimiter=",", quotechar='"')
-        file_list = [job for job in file_reader]
+    try:
+        with open(path) as file:
+            file_reader = csv.DictReader(file, delimiter=",", quotechar='"')
+            file_list = [job for job in file_reader]
+    except OSError:
+        print("Arquivo inexistente")
     """"
     Returns
     -------

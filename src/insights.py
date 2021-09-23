@@ -39,7 +39,11 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    return []
+    job_filtered = []
+    for job in jobs:
+        if job["job_type"] == job_type:
+            job_filtered.append(job)
+    return job_filtered
 
 
 def get_unique_industries(path):
@@ -135,9 +139,6 @@ def get_min_salary(path):
     min_salary = min(salaries)
     print(min_salary)
     return min_salary
-
-
-get_min_salary("src/jobs.csv")
 
 
 def matches_salary_range(job, salary):

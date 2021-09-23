@@ -66,12 +66,12 @@ def list_jobs():
 
 @bp.route("/job/<index>")
 def job_by_index(index):
-    # path called liked line 34
+    # path called liked line 39
     jobs = read(path="src/jobs.csv")
     # call the funcion at line9 - of 'more insights'
-    job_found = get_job(jobs, index)
+    job = get_job(jobs, index)
     # render the template with jinja
-    return render_template("job.jinja2", job=job_found)
+    return render_template("job.jinja2", job=job)
 
 
 def init_app(app: Flask):

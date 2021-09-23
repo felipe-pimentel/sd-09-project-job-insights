@@ -159,7 +159,9 @@ def matches_salary_range(job: dict, salary: int) -> bool:
     ]
     if all(input_check):
         if job['min_salary'] > job['max_salary']:
-            raise ValueError('Maximum salary must be greater or equal to the minimum salary')
+            raise ValueError(
+                'Maximum salary must be greater or equal to the minimum salary'
+            )
 
         return job['min_salary'] <= salary <= job['max_salary']
     else:

@@ -1,19 +1,14 @@
+from src.jobs import read
+
+
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
+    jobs = read(path)
+    jobs_type = set()
 
-    Must call `read`
+    for job in jobs:
+        jobs_type.add(job["job_type"]),
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    return []
+    return [*jobs_type]
 
 
 def filter_by_job_type(jobs, job_type):
@@ -148,3 +143,6 @@ def filter_by_salary_range(jobs, salary):
         Jobs whose salary range contains `salary`
     """
     return []
+
+
+get_unique_job_types('jobs.csv')

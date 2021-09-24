@@ -70,17 +70,18 @@ def filter_by_industry(jobs, industry):
 def get_max_salary(path):
     job_max_salary = read(path)
 
-    salary_max = 0
+    salary_max = []
 
     for row in job_max_salary:
-        if row["max_salary"] != '':
-            try:
-                if salary_max < int(row["max_salary"]):
-                    salary_max = int(row["max_salary"])
-            except ValueError:
-                print("Não deu certo. Tente outra vez!")
+        if row["max_salary"] != '' and row["max_salary"].isdigit():
+            salary_max.append(int(row["max_salary"]))
+            # try:
+            #     if salary_max < int(row["max_salary"]):
+            #         salary_max = int(row["max_salary"])
+            # except ValueError:
+            #     print("Não deu certo. Tente outra vez!")
 
-    return salary_max
+    return max(salary_max)
 
 
 # print(get_max_salary("src/jobs.csv"))

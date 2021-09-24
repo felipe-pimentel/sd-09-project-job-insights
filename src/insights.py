@@ -128,6 +128,7 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
+
     #  https://www.programiz.com/python-programming/methods/string/isnumeric
     #  https://www.programiz.com/python-programming/methods/built-in/min
     jobs = read(path)

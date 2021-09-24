@@ -3,18 +3,16 @@ from src.jobs import read
 
 def get_unique_job_types(path):
     csv_file = read(path)
-    job_types = []
+    job_types = set()
 
     for row in csv_file:
-        job_type = row['job_type']
-        if job_type != '' and job_type not in job_types:
-            job_types.append(job_type)
+        job_types.add(row["job_type"])
 
     return job_types
 
 
-# def filter_by_job_type(jobs, job_type):
-#     csv_file = read(path)
+def filter_by_job_type(jobs, job_type):
+    return []
 
 
 def get_unique_industries(path):
@@ -28,8 +26,8 @@ def get_unique_industries(path):
     return unique_industries
 
 
-# def filter_by_industry(jobs, industry):
-#     return []
+def filter_by_industry(jobs, industry):
+    return []
 
 
 def get_max_salary(path):
@@ -57,9 +55,9 @@ def get_min_salary(path):
         return lowest_salary
 
 
-# def matches_salary_range(job, salary):
-#     pass
+def matches_salary_range(job, salary):
+    pass
 
 
-# def filter_by_salary_range(jobs, salary):
-#     return []
+def filter_by_salary_range(jobs, salary):
+    return []

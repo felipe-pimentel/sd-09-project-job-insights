@@ -49,10 +49,10 @@ def get_min_salary(path):
 
     for row in csv_file:
         min_salary = row["min_salary"]
-        minimum_salaries.add(int(min_salary))
-
-        lowest_salary = min(minimum_salaries, key=int)
-        return lowest_salary
+        if min_salary.isdigit():
+            minimum_salaries.add(int(min_salary))
+    lowest_salary = min(minimum_salaries, key=int)
+    return lowest_salary
 
 
 def matches_salary_range(job, salary):

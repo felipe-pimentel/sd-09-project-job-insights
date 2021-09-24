@@ -63,12 +63,10 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
-    for value in job:
-        try:
-            value["max_salary"] < salary > value["min_salary"]
-            return True
-        except ValueError:
-            return False
+    try:
+        salary
+    except ValueError:
+        pass
 
 
 def filter_by_salary_range(jobs, salary):

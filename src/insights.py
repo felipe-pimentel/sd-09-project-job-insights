@@ -162,7 +162,28 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    pass
+    #  O keys()método retorna um objeto de visualização.
+    #  O objeto de visualização contém as chaves do dicionário, como uma lista.
+    #  https://www.w3schools.com/python/ref_dictionary_keys.asp
+    #  https://www.programiz.com/python-programming/methods/built-in/isinstance
+    if not (
+        "min_salary" in job.keys()
+        and isinstance(job["min_salary"], int)
+        and job["min_salary"] >= 0
+    ):
+        raise ValueError("Erro ao encontrar o min_salary")
+
+    if not (
+        "max_salary" in job.keys()
+        and isinstance(job["max_salary"], int)
+        and job["max_salary"] >= 0
+    ):
+        raise ValueError("Erro ao encontrar o max_salary")
+
+    if job["min_salary"] > job["max_salary"]:
+        raise ValueError("Erro, o min_salary é maior que o max_salary")
+
+    return job["min_salary"] <= salary <= job["max_salary"]
 
 
 def filter_by_salary_range(jobs, salary):

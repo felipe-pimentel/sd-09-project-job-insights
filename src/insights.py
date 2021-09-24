@@ -103,6 +103,7 @@ def get_max_salary(path):
         The maximum salary paid out of all job opportunities
     """
     #  https://www.programiz.com/python-programming/methods/string/isnumeric
+    #  https://www.programiz.com/python-programming/methods/built-in/max
     jobs = read(path)
     highest_salary = set()
     for job in jobs:
@@ -127,7 +128,15 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
+    #  https://www.programiz.com/python-programming/methods/string/isnumeric
+    #  https://www.programiz.com/python-programming/methods/built-in/min
+    jobs = read(path)
+    lowest_salary = set()
+    for job in jobs:
+        if job["min_salary"].isnumeric():
+            lowest_salary.add(int(job["min_salary"]))
+
+    return min(lowest_salary)
 
 
 def matches_salary_range(job, salary):

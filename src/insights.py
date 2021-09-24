@@ -13,7 +13,7 @@ def get_unique_job_types(path):
     return jobs_unique
 
 
-print(get_unique_job_types("src/jobs.csv"))
+# print(get_unique_job_types("src/jobs.csv"))
 
 
 def filter_by_job_type(jobs, job_type):
@@ -46,7 +46,7 @@ def get_unique_industries(path):
     return industries_unique
 
 
-print(get_unique_industries('src/jobs.csv'))
+# print(get_unique_industries('src/jobs.csv'))
 
 
 def filter_by_industry(jobs, industry):
@@ -68,23 +68,23 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-
     # PESQUISAR METODOS DO PYTHON
-    """Get the maximum salary of all jobs
+    job_max_salary = read(path)
 
-    Must call `read`
+    salary_max = 0
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
+    for row in job_max_salary:
+        if row["max_salary"] != '':
+            try:
+                if salary_max < int(row["max_salary"]):
+                    salary_max = int(row["max_salary"])
+            except ValueError:
+                print("Não deu certo. Tente outra vez!")
 
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    return salary_max
+
+
+# print(get_max_salary("src/jobs.csv"))
 
 
 def get_min_salary(path):

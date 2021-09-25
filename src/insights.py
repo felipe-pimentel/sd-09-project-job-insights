@@ -203,6 +203,8 @@ def filter_by_salary_range(jobs, salary):
         Jobs whose salary range contains `salary`
     """
     #  https://www.programiz.com/python-programming/methods/dictionary/keys
+    #  O método keys () retorna um objeto de visualização que exibe
+    #  uma lista de todas as chaves no dicionário
     filter_salary_range = []
 
     for job in jobs:

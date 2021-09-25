@@ -16,9 +16,9 @@ def get_unique_job_types(path):
     list
         List of unique job types
     """
-    jobs_list = read(path)
+    jobs = read(path)
 
-    return {job["job_type"] for job in jobs_list if job["job_type"] != ""}
+    return {job["job_type"] for job in jobs if job["job_type"] != ""}
 
 
 def filter_by_job_type(jobs, job_type):
@@ -54,9 +54,9 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    jobs_list = read(path)
+    jobs = read(path)
 
-    return {job["industry"] for job in jobs_list if job["industry"] != ""}
+    return {job["industry"] for job in jobs if job["industry"] != ""}
 
 
 def filter_by_industry(jobs, industry):
@@ -92,10 +92,10 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    jobs_list = read(path)
+    jobs = read(path)
     max_salary_list = []
 
-    for job in jobs_list:
+    for job in jobs:
         if job["max_salary"].isnumeric():
             max_salary_list.append(int(job["max_salary"]))
 
@@ -117,14 +117,14 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    jobs_list = read(path)
-    max_salary_list = []
+    jobs = read(path)
+    min_salary_list = []
 
-    for job in jobs_list:
+    for job in jobs:
         if job["min_salary"].isnumeric():
-            max_salary_list.append(int(job["min_salary"]))
+            min_salary_list.append(int(job["min_salary"]))
 
-    return min(max_salary_list)
+    return min(min_salary_list)
 
 
 def matches_salary_range(job, salary):
@@ -158,6 +158,7 @@ def matches_salary_range(job, salary):
         raise ValueError
     elif job["min_salary"] <= salary <= job["max_salary"]:
         return True
+
     return False
 
 
@@ -176,4 +177,13 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return []
+    output = []
+
+    for job in jobs:
+        try:
+            if type(salary) == int and matches_salary_range(job, salary):
+                output.append(job)
+        except ValueError:
+            pass
+
+    return output

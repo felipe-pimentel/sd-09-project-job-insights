@@ -1,5 +1,5 @@
 from src.jobs import read
-# from jobs import read
+#   from jobs import read
 
 
 def get_unique_job_types(path):
@@ -17,21 +17,12 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
+    filter_job_type = []
+    for job in jobs:
+        if job["job_type"] == job_type:
+            filter_job_type.append(job)
 
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    return filter_job_type
 
 
 def get_unique_industries(path):
@@ -50,21 +41,12 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
+    filter_industry = []
+    for job in jobs:
+        if job["industry"] == industry:
+            filter_industry.append(job)
 
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
+    return filter_industry
 
 
 def get_max_salary(path):
@@ -74,6 +56,7 @@ def get_max_salary(path):
 
     for row in job_max_salary:
         if row["max_salary"] != '' and row["max_salary"].isdigit():
+            # https://www.programiz.com/python-programming/methods/string/isdigit
             salary_max.append(int(row["max_salary"]))
             # try:
             #     if salary_max < int(row["max_salary"]):

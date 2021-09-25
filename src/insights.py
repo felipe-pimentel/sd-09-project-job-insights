@@ -112,6 +112,7 @@ def get_max_salary(path):
     for job in all_jobs_list:
         if job["max_salary"].isdigit():
             salary_list.append(job["max_salary"])
+
     return max(salary_list)
 
 
@@ -133,7 +134,17 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
+    all_jobs_list = jobs.read(path)
+
+    salary_list = []
+    for job in all_jobs_list:
+        if job["min_salary"].isdigit():
+            salary_list.append(job["min_salary"])
+
+    return min(salary_list)
+
+
+# print(get_min_salary("tests/mocks/jobs_with_salaries.csv"))
 
 
 def matches_salary_range(job, salary):

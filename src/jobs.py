@@ -16,20 +16,13 @@ def read(path):
     list
         List of rows as dicts
     """
+    jobs = []
     with open(path) as jobs_file:
-        headers, *jobs_list = csv.reader(
-            jobs_file,
-            delimiter=",",
-            quotechar='"'
-        )
+        reader = csv.DictReader(jobs_file)
+        for line in reader:
+            jobs.append(line)
 
-        all_jobs_list = []
-        all_jobs_dict = {}
+    return jobs
 
-        for job_list in jobs_list:
-            for item in job_list:
-                all_jobs_dict[headers[job_list.index(item)]] = item
 
-            all_jobs_list.append(all_jobs_dict.copy())
-
-    return all_jobs_list
+# print(read("tests/mocks/jobs.csv"))

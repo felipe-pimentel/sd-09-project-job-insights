@@ -1,4 +1,4 @@
-from jobs import read
+import jobs
 
 
 def get_unique_job_types(path):
@@ -16,17 +16,16 @@ def get_unique_job_types(path):
     list
         List of unique job types
     """
-
-    all_jobs_list = read(path)
+    all_jobs_list = jobs.read(path)
 
     jobs_type = set()
     for job_type in all_jobs_list:
-        jobs_type.add(all_jobs_list[all_jobs_list.index(job_type)]["type"])
+        jobs_type.add(job_type["job_type"])
 
-    return all_jobs_list
+    return jobs_type
 
 
-# get_unique_job_types("tests/mocks/jobs.csv")
+# print(get_unique_job_types("tests/mocks/jobs_with_types.csv"))
 
 
 def filter_by_job_type(jobs, job_type):
@@ -62,24 +61,16 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    all_industries_list = read(path)
+    all_industries_list = jobs.read(path)
 
     industries_type = set()
     for industry_type in all_industries_list:
-        industries_type.add(
-            all_industries_list
-            [
-                all_industries_list.index(industry_type)
-            ]
-            [
-                "industry"
-            ]
-        )
+        industries_type.add(industry_type["industry"])
 
     return industries_type
 
 
-# get_unique_industries("tests/mocks/jobs_with_industries.csv")
+# print(get_unique_industries("tests/mocks/jobs_with_industries.csv"))
 
 
 def filter_by_industry(jobs, industry):
@@ -115,15 +106,16 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    # all_salary_list = read(path)
+    all_jobs_list = jobs.read(path)
 
-    # for job in all_salary_list:
-    #     if (job["max_salary"] != "invalid" and job["max_salary"] != ""):
+    salary_list = []
+    for job in all_jobs_list:
+        if job["max_salary"].isdigit():
+            salary_list.append(job["max_salary"])
+    return max(salary_list)
 
-    pass
 
-
-# get_max_salary("tests/mocks/jobs_with_salaries.csv")
+# print(get_max_salary("tests/mocks/jobs_with_salaries.csv"))
 
 
 def get_min_salary(path):

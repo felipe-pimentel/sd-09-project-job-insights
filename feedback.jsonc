@@ -1,12 +1,12 @@
 {
     // Coloque seu nome para sabermos de quem foi o comentário =D (opcional)
-    "nome": "",
+    "nome": "Alvaro Braga",
     // Dê uma nota ao projeto *^* (int de 0 a 10) (obrigatório)
-    "nota": ,
+    "nota": 9,
     // O que você mais gostou no projeto? (obrigatório, mas pode colocar "não há")
-    "pontos_positivos": "",
+    "pontos_positivos": "Desenvolver este início de trajetória com o Python e gerou novos conhecimentos sobre diferentes métodos que podem ser usados na libguagem",
     // O que você menos gostou no projeto? (obrigatório, mas pode colocar "não há")
-    "pontos_negativos": "",
+    "pontos_negativos": "Alguns pontos que ficaram confusos nas instruções dos enunciados de cada requisito, por exemplo a forma como tratar itens ausentes nos filtros solicitados",
     // Comentário livre sobre o que você achou do projeto (opcional)
-    "comentário": ""
+    "comentário": "Acredito sempre haver espaço para alguma melhoria. Sugiro instruções dos requisitos mais assertivas"
 }

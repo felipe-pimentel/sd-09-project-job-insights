@@ -18,7 +18,7 @@ def get_unique_job_types(path):
     """
     jobs_list = read(path)
 
-    return {job["job_type"] for job in jobs_list}
+    return {job["job_type"] for job in jobs_list if job["job_type"] != ""}
 
 
 def filter_by_job_type(jobs, job_type):
@@ -54,7 +54,9 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    return []
+    jobs_list = read(path)
+
+    return {job["industry"] for job in jobs_list if job["industry"] != ""}
 
 
 def filter_by_industry(jobs, industry):

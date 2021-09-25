@@ -103,6 +103,8 @@ def matches_salary_range(job, salary):
         int_salary(salary)
        ):
         return (job['min_salary'] <= salary <= job['max_salary'])
+
+
 """ def matches_salary_range(job, salary):
     if 'max_salary' not in job and 'min_salary' not in job:
         raise ValueError('error')

@@ -1,5 +1,7 @@
 from src.jobs import read
 
+# from jobs import read
+
 
 def get_unique_job_types(path):
     jobs_dictionary = read(path)
@@ -58,21 +60,18 @@ def get_max_salary(path):
     jobs_dictionary = read(path)
     max_salary = 0
     for row in jobs_dictionary:
-        if row["max_salary"] != "":
+        if row["max_salary"] != "" and row["max_salary"].isdigit():
             if int(row["max_salary"]) > max_salary:
                 max_salary = int(row["max_salary"])
 
     return max_salary
 
 
-# print(get_max_salary("jobs.csv"))
-
-
 def get_min_salary(path):
     jobs_dictionary = read(path)
     min_salary = 100000000
     for row in jobs_dictionary:
-        if row["min_salary"] != "":
+        if row["min_salary"] != "" and row["min_salary"].isdigit():
             if 0 < int(row["min_salary"]) < min_salary:
                 min_salary = int(row["min_salary"])
 

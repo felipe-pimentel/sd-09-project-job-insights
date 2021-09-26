@@ -70,12 +70,9 @@ def get_max_salary(path):
 
     salary = 0
     for jobs in readed_jobs:
-        if jobs['max_salary'] != '' and int(jobs['max_salary']) > salary:
+        if jobs['max_salary'].isdigit() and int(jobs['max_salary']) > salary:
             salary = int(jobs['max_salary'])
     return salary
-
-
-# get_max_salary("jobs.csv")
 
 
 def get_min_salary(path):

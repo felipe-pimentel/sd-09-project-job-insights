@@ -47,7 +47,6 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
-    
     """Filters a list of jobs by industry
 
     Parameters
@@ -72,12 +71,11 @@ def get_max_salary(path):
     salary = 0
     for jobs in readed_jobs:
         if jobs['max_salary'] != '' and int(jobs['max_salary']) > salary:
-           salary = int(jobs['max_salary'])
+            salary = int(jobs['max_salary'])
     return salary
 
 
 # get_max_salary("jobs.csv")
-
 
 
 def get_min_salary(path):

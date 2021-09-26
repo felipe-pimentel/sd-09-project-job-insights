@@ -71,9 +71,6 @@ def get_max_salary(path):
     return max_salary
 
 
-print(get_max_salary("jobs.csv"))
-
-
 def get_min_salary(path):
     """Get the minimum salary of all jobs
 

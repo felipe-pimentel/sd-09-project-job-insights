@@ -1,4 +1,5 @@
 from src.jobs import read
+import sys
 
 
 def get_unique_job_types(path):
@@ -121,7 +122,13 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
+    jobList = read(path)
+    minSalary = sys.maxsize
+    for job in jobList:
+        if (job["min_salary"] and job["min_salary"] != "invalid"):
+            if(int(job["min_salary"]) < minSalary):
+                minSalary = int(job["min_salary"])
+    return minSalary
 
 
 def matches_salary_range(job, salary):

@@ -1,10 +1,4 @@
-import csv
-
-
-def read(path):
-    with open(path, mode="r") as file:
-        jobs_dictionary = list(csv.DictReader(file))
-        return jobs_dictionary
+from src.jobs import read
 
 
 def get_unique_job_types(path):
@@ -69,6 +63,9 @@ def get_max_salary(path):
                 max_salary = int(row["max_salary"])
 
     return max_salary
+
+
+# print(get_max_salary("jobs.csv"))
 
 
 def get_min_salary(path):

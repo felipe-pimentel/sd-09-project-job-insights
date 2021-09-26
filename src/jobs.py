@@ -1,9 +1,4 @@
-from functools import lru_cache
-
-
-@lru_cache
-def read(path):
-    """Reads a file from a given path and returns its contents
+"""Reads a file from a given path and returns its contents
 
     Parameters
     ----------
@@ -14,5 +9,15 @@ def read(path):
     -------
     list
         List of rows as dicts
-    """
-    return []
+"""
+
+from functools import lru_cache
+import csv
+
+@lru_cache
+def read(path):
+
+    with open(path) as file:
+        content = list(csv.DictReader(file))
+    #print(content)
+    return content

@@ -46,8 +46,6 @@ def get_unique_industries(path):
 # get_unique_industries("jobs.csv")
 
 
-
-
 def filter_by_industry(jobs, industry):
     """Filters a list of jobs by industry
 

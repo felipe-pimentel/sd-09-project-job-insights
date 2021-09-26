@@ -14,10 +14,10 @@
 from functools import lru_cache
 import csv
 
+
 @lru_cache
 def read(path):
 
     with open(path) as file:
         content = list(csv.DictReader(file))
-    #print(content)
     return content

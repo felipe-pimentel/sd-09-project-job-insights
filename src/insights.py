@@ -36,9 +36,13 @@ def filter_by_job_type(jobs, job_type):
 def get_unique_industries(path):
     jobs_dictionary = read(path)
     industry_types = set()
-    for industry in jobs_dictionary:
-        industry_types.add(industry["industry"])
+    for row in jobs_dictionary:
+        if row["industry"] != "":
+            industry_types.add(row["industry"])
     return [*industry_types]
+
+
+print(get_unique_industries("jobs.csv"))
 
 
 def filter_by_industry(jobs, industry):

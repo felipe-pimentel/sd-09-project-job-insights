@@ -60,7 +60,9 @@ def get_unique_industries(path):
     list_of_industries = read(path)
     collection_industries = set()
     for industry in list_of_industries:
-        collection_industries.add(industry["industry"])
+        if industry["industry"] not in collection_industries:
+            if industry["industry"] != "":
+                collection_industries.add(industry["industry"])
     return collection_industries
 
 

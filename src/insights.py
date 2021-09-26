@@ -74,6 +74,20 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
+    # https://www.geeksforgeeks.org/python-get-dictionary-keys-as-a-list/
+    if  'min_salary' not in job.keys() or 'max_salary' not in job.keys():
+        raise ValueError("min_salary or max_salary doens't exist")
+    if  type(job['min_salary']) != int or type(job['max_salary']) != int:
+        raise ValueError("min_salary and max_salary must be numbers")
+    if job['min_salary'] > job['max_salary']:
+        raise ValueError("min_salary can't be higher than max_salary")
+    if type(salary) != int:
+        raise ValueError("salary must be a number")
+    if job['min_salary'] <= salary <= job['max_salary']:
+        return True
+    else: return False
+
+
     """Checks if a given salary is in the salary range of a given job
 
     Parameters

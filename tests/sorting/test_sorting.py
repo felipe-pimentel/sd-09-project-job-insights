@@ -5,3 +5,6 @@ import pytest
 def test_sort_by_criteria():
     with pytest.raises(ValueError, match="invalid sorting criteria:"):
         sort_by("test", "data")
+
+        with pytest.raises(ValueError, match="invalid sorting criteria:"):
+            sort_by("test", "data")

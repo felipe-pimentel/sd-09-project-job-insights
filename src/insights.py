@@ -98,4 +98,3 @@ def filter_by_salary_range(jobs, salary):
         elif job['min_salary'] <= salary <= job['max_salary']:
             jobs_to_return.append(job)
     return jobs_to_return
-

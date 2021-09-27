@@ -9,7 +9,6 @@ def test_sort_by_criteria():
 ]
 
     sort_by(jobs, 'max_salary')
-    # assert [row['max_salary'] for row in jobs] == [9000,6000,3000]
     lista = []
     for job in jobs:
         lista.append(job['max_salary'])

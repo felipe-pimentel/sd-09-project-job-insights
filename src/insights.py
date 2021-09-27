@@ -20,7 +20,7 @@ def get_unique_job_types(path):
     for job in read(path):
         for types in job["job_type"].split(","):
             unique_job_type.add(types)
-    return len(unique_job_type)
+    return unique_job_type
 
 
 def filter_by_job_type(jobs, job_type):

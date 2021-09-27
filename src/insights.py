@@ -11,20 +11,6 @@ def get_unique_job_types(path):
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
     selected_jobs = []
     for job in jobs:
         if job['job_type'] == job_type:
@@ -84,7 +70,14 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+    all_salaries = []
+    jobs_list = read(path)
+    for job in jobs_list:
+        if job['max_salary'] != '' and job['max_salary'] != 'invalid':
+            all_salaries.append(int(job['max_salary']))
+
+    max_salary = max(all_salaries)
+    return max_salary
 
 
 def get_min_salary(path):

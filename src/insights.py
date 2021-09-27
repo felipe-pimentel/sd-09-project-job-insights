@@ -18,6 +18,7 @@ def get_unique_job_types(path):
 
 def filter_by_job_type(jobs, job_type):
     filter_job_type = []
+
     for job in jobs:
         if job["job_type"] == job_type:
             filter_job_type.append(job)
@@ -106,18 +107,13 @@ def matches_salary_range(job, salary):
 
 
 def filter_by_salary_range(jobs, salary):
-    """Filters a list of jobs by salary range
+    salary_range = []
 
-    Parameters
-    ----------
-    jobs : list
-        The jobs to be filtered
-    salary : int
-        The salary to be used as filter
+    for job in jobs:
+        try:
+            if isinstance(salary, int) and matches_salary_range(job, salary):
+                salary_range.append(job)
+        except ValueError:
+            print("Ocorreu um erro, tente novamente!")
 
-    Returns
-    -------
-    list
-        Jobs whose salary range contains `salary`
-    """
-    return []
+    return salary_range

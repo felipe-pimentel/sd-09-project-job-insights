@@ -13,18 +13,14 @@ sorted_by_min = [job_1, job_3, job_2]
 
 
 def test_sort_by_criteria():
-    print('Sort by date')
-    sort = sort_by(allJobs, 'date_posted')
-    assert sorted_by_date == sort
+    sort_by(allJobs, 'date_posted')
+    assert sorted_by_date == allJobs
 
-    print('Sort by max salary')
-    sort = sort_by(allJobs, 'max_salary')
-    assert sorted_by_max == sort
+    sort_by(allJobs, 'max_salary')
+    assert sorted_by_max == allJobs
 
-    print('Sort by min salary')
-    sort = sort_by(allJobs, 'min_salary')
-    assert sorted_by_min == sort
+    sort_by(allJobs, 'min_salary')
+    assert sorted_by_min == allJobs
 
-    print('Invalid criteria')
     with pytest.raises(ValueError):
         sort_by(allJobs, 'xerif')

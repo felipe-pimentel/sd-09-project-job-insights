@@ -1,4 +1,4 @@
-from jobs import read
+from src.jobs import read
 
 
 def get_unique_job_types(path):
@@ -31,7 +31,7 @@ def filter_by_industry(jobs, industry):
     industries_filtered = []
     for job in jobs:
         if (job['industry'] == industry):
-            industries_filtered.append(job['industry'])
+            industries_filtered.append(job)
 
 
 def get_max_salary(path):

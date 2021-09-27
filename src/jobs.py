@@ -11,23 +11,16 @@ def read(path):
 
 # @lru_cache
 # def read(path):
-#     """Reads a file from a given path and returns its contents
-
-#     Parameters
-#     ----------
-#     path : str
-#         Full path to file
-
-#     Returns
-#     -------
-#     list
-#         List of rows as dicts
-#     """
 #     with open(path, mode='r') as csv_file:
 #         fileContent = csv.DictReader(csv_file)
-#         jobs_type = set()
+#         industries_types = set()
 #         for job in fileContent:
-#             jobs_type.add(job["job_type"]),
-
-#         print(jobs_type)
+#             if job['industry'] != "":
+#                 industries_types.add(job["industry"]),
+#         industries_types_array = [*industries_types]
+#         print(industries_types_array)
+#         print(len(industries_types_array))
 #         # return fileContent
+
+
+# read('jobs.csv')

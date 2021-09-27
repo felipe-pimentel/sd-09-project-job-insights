@@ -6,8 +6,9 @@ import csv
 def read(path):
 
     with open(path, mode='r') as csv_file:
-        fileContent = csv.DictReader(csv_file)
+        fileContent = list(csv.DictReader(csv_file))
         return fileContent
+
 
 # @lru_cache
 # def read(path):

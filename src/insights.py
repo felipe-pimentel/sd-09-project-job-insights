@@ -77,26 +77,19 @@ def matches_salary_range(job, salary):
         salary_number = int(salary)
         if min_salary_number > max_salary_number:
             raise ValueError('invalid salary range')
-        if min_salary_number <= salary_number <= max_salary_number:
-            return True
-        else:
-            return False
+        return min_salary_number <= salary_number <= max_salary_number
     except TypeError:
         raise ValueError('wrong type of value')
     except KeyError:
-        raise ValueError('missing input')
-    except ValueError:
-        raise ValueError('one of the inputs is not a number')
+        raise ValueError('missing key')
 
 
 def filter_by_salary_range(jobs, salary):
-    try:
-        filtered_jobs = [
-            job
-            for job in jobs
-            if matches_salary_range(job, salary)
-        ]
-    except ValueError:
-        pass
-    else:
-        return filtered_jobs
+    filtered_jobs = []
+    for job in jobs:
+        try:
+            if matches_salary_range(job, salary):
+                filtered_jobs.append(job)
+        except ValueError:
+            pass
+    return filtered_jobs

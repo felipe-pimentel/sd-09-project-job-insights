@@ -11,5 +11,5 @@ def read(path):
         content = csv.DictReader(filejobs, delimiter=",")
         for row in content:
             result_list.append(row)
-
+    
     return result_list

@@ -1,12 +1,12 @@
 {
     // Coloque seu nome para sabermos de quem foi o comentário =D (opcional)
-    "nome": "",
+    "nome": "Rafael Reis",
     // Dê uma nota ao projeto *^* (int de 0 a 10) (obrigatório)
-    "nota": ,
+    "nota": 8,
     // O que você mais gostou no projeto? (obrigatório, mas pode colocar "não há")
-    "pontos_positivos": "",
+    "pontos_positivos": "Descobrir o app criado com o Flask! Além da minha surpresa ao ver rodando, me interessei por querer aprender mais sobre o Flask <3",
     // O que você menos gostou no projeto? (obrigatório, mas pode colocar "não há")
-    "pontos_negativos": "",
+    "pontos_negativos": "Achei a maior parte do projeto repetitiva e com soluções que se resumiam em , majoritariamente, percorer um array com um 'for' e retornar algo",
     // Comentário livre sobre o que você achou do projeto (opcional)
-    "comentário": ""
+    "comentário": "Me decepcionei com as validadções dos testes da 'sort_by_criteria'. A impressão que ficou foi de que qualquer teste escrito que garanta que a função retorna pelo menos um valor correto, passa nos requisitos"
 }

@@ -93,13 +93,11 @@ def get_max_salary(path):
         The maximum salary paid out of all job opportunities
     """
     jobs = read(path)
-    max_salary_list = []
 
-    for job in jobs:
-        if job["max_salary"].isnumeric():
-            max_salary_list.append(int(job["max_salary"]))
+    salaries = [int(job["max_salary"])
+                for job in jobs if job["max_salary"].isnumeric()]
 
-    return max(max_salary_list)
+    return max(salaries)
 
 
 def get_min_salary(path):
@@ -118,13 +116,11 @@ def get_min_salary(path):
         The minimum salary paid out of all job opportunities
     """
     jobs = read(path)
-    min_salary_list = []
 
-    for job in jobs:
-        if job["min_salary"].isnumeric():
-            min_salary_list.append(int(job["min_salary"]))
+    salaries = [int(job["min_salary"])
+                for job in jobs if job["min_salary"].isnumeric()]
 
-    return min(min_salary_list)
+    return min(salaries)
 
 
 def matches_salary_range(job, salary):
@@ -150,11 +146,13 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    if (type(job.get("min_salary", "max_salary")) != int
-            or job["min_salary"] > job["max_salary"]):
+    min_salary, max_salary = job.get("min_salary"), job.get("max_salary")
+
+    if (type(min_salary) != int or type(max_salary) != int
+            or type(salary) != int or min_salary > max_salary):
         raise ValueError
 
-    return job["min_salary"] <= salary <= job["max_salary"]
+    return min_salary <= salary <= max_salary
 
 
 def filter_by_salary_range(jobs, salary):
@@ -176,7 +174,7 @@ def filter_by_salary_range(jobs, salary):
 
     for job in jobs:
         try:
-            if type(salary) == int and matches_salary_range(job, salary):
+            if matches_salary_range(job, salary):
                 output.append(job)
         except ValueError:
             pass

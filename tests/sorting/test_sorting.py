@@ -1,4 +1,4 @@
-from src.sorting import date_posted_key, max_salary_key, sort_by
+from src.sorting import sort_by
 import pytest
 
 

@@ -1,6 +1,5 @@
 import math
 from datetime import date
-import pytest
 
 
 def max_salary_key(job):
@@ -90,7 +89,8 @@ def sort_by(jobs, criteria):
     try:
         key = criteria_keys[criteria]
     except KeyError:
-        raise ValueError("invalid sorting criteria: {criteria}")
+        raise ValueError(f"invalid sorting criteria: {criteria}")
+
     reverse = criteria in ["max_salary", "date_posted"]
 
     jobs.sort(key=key, reverse=reverse)

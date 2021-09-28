@@ -31,24 +31,12 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
     jobs_list = []
     for job in jobs:
         if job['industry'] == industry:
             jobs_list.append(job)
+
+    print(jobs_list)
     return jobs_list
 
 
@@ -97,7 +85,38 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    pass
+    if 'min_salary' not in job or 'max_salary' not in job:
+        raise ValueError('Some salary is empty')
+
+    if job['max_salary'] == '' or job['min_salary'] == '':
+        raise ValueError('There is an invalid salary value')
+
+    if type(job['max_salary']) is not int:
+        print(job['max_salary'])
+        raise ValueError('Max salary is not numeric')
+
+    if type(job['min_salary']) is not int:
+        print(job['min_salary'])
+        raise ValueError('Min salary is not numeric')
+
+    if (job['max_salary'] - job['min_salary']) < 0:
+        raise ValueError('Maximum salary is less than the minimum salary')
+
+    # delta_salary = job['max_salary'] - job['min_salary']
+
+    # print('delta_salary')
+    # print(delta_salary)
+    # print('salary')
+    # print(salary)
+
+    # if delta_salary <= salary:
+    #     print('True')
+    #     return True
+
+    # if delta_salary > salary:
+    #     print('False')
+    #     return False
+    return (job['min_salary'] <= salary <= job['max_salary'])
 
 
 def filter_by_salary_range(jobs, salary):

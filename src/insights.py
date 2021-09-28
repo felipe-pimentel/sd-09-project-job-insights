@@ -136,8 +136,8 @@ def get_min_salary(path):
     for row in salary:
         if row['min_salary'] != '' and row['min_salary'].isdigit():
 
-            min_salary.append(int(row['min_salary']))    
-    
+            min_salary.append(int(row['min_salary']))
+
     return min(min_salary)
 
 

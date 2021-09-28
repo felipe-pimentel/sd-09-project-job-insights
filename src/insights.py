@@ -35,7 +35,6 @@ def get_unique_job_types(path):
     return []
 
 
-get_unique_job_types('jobs.csv')
 
 
 def filter_by_job_type(jobs, job_type):

@@ -69,6 +69,7 @@ def matches_salary_range(job, salary):
     if (
         type(job['max_salary']) is not int
         or type(job['min_salary']) is not int
+        or type(salary) is not int
     ):
         raise ValueError('Max salary is not numeric')
 

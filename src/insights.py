@@ -1,3 +1,6 @@
+from .jobs import read
+
+
 def get_unique_job_types(path):
     """Checks all different job types and returns a list of them
 
@@ -13,7 +16,13 @@ def get_unique_job_types(path):
     list
         List of unique job types
     """
-    return []
+    jobs = read(path)
+    job_types = set()
+    for job in jobs:
+        job_types.add(job["job_type"])
+    return job_types
+# aqui vamos usar conjuntos (set) porque queremos
+# elementos únicos e não ordenados
 
 
 def filter_by_job_type(jobs, job_type):
@@ -31,7 +40,10 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    return []
+    filtered_jobs = [job
+                     for job in jobs
+                     if job["job_type"] == job_type]
+    return filtered_jobs
 
 
 def get_unique_industries(path):
@@ -49,7 +61,12 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    return []
+    jobs = read(path)
+    industries = set()
+    for job in jobs:
+        if job["industry"] != "":
+            industries.add(job["industry"])
+    return industries
 
 
 def filter_by_industry(jobs, industry):
@@ -67,7 +84,10 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
-    return []
+    jobs_filtered_by_industry = [job
+                                 for job in jobs
+                                 if job["industry"] == industry]
+    return jobs_filtered_by_industry
 
 
 def get_max_salary(path):

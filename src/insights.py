@@ -40,7 +40,13 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    return []
+    filterByType = []
+
+    for job in jobs:
+        if job['job_type'] == job_type:
+            filterByType.append(job)
+
+    return filterByType
 
 
 def get_unique_industries(path):

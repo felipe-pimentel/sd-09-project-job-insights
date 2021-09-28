@@ -2,54 +2,48 @@ from src.jobs import read
 
 
 def get_unique_job_types(path):
-    unique_job_types = list([jobs['job_type'] for jobs in read(path)])
+    unique_job_types = list([jobs["job_type"] for jobs in read(path)])
     return set(unique_job_types)
 
 
 def filter_by_job_type(jobs, job_type):
-    jobs_by_type = [
-        job for job in jobs
-        if job['job_type'] == job_type
-    ]
+    jobs_by_type = [job for job in jobs if job["job_type"] == job_type]
     return jobs_by_type
 
 
 def get_unique_industries(path):
     unique_industries = list(
-        [jobs['industry'] for jobs in read(path) if jobs['industry'] != '']
-        )
+        [jobs["industry"] for jobs in read(path) if jobs["industry"] != ""]
+    )
     return set(unique_industries)
 
 
 def filter_by_industry(jobs, industry):
-    jobs_by_industry = [
-        job for job in jobs
-        if job['industry'] == industry
-    ]
+    jobs_by_industry = [job for job in jobs if job["industry"] == industry]
     return jobs_by_industry
 
 
+def int_verify_exceptions(salary):
+    try:
+        int(salary)
+        return True
+    except ValueError:
+        return False
+    except TypeError:
+        return False
+
+
 def get_max_salary(path):
-    max_salary = max([int(jobs['max_salary']) for jobs in read(path)])
-    return max_salary
+    all_salaries = [
+        int(jobs["max_salary"])
+        for jobs in read(path)
+        if int_verify_exceptions(jobs["max_salary"])
+    ]
+    return max(all_salaries)
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    return []
 
 
 def matches_salary_range(job, salary):

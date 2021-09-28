@@ -177,7 +177,20 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    pass
+#    colab kamila ribeiro
+    if ("min_salary" or "max_salary") not in job:
+        raise ValueError("Busca não encontrada")
+
+    elif type(job["min_salary"] or job["max_salary"] or salary) != int:
+        raise ValueError("Busca não encontrada")
+
+    elif (job["min_salary"] > job["max_salary"]):
+        raise ValueError("Busca não encontrada")
+
+    elif (job["min_salary"] <= salary <= job["max_salary"]):
+        return True
+
+    return False
 
 
 def filter_by_salary_range(jobs, salary):
@@ -195,4 +208,14 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return []
+#    kamila gooood  codigo limpo super colab
+    salary_range = []
+
+    for job in jobs:
+        try:
+            if isinstance(salary, int) and matches_salary_range(job, salary):
+                salary_range.append(job)
+        except ValueError:
+            print("Ocorreu um erro, tente novamente!")
+
+    return salary_range

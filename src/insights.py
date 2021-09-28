@@ -43,7 +43,12 @@ def get_max_salary(path):
 
 
 def get_min_salary(path):
-    return []
+    all_salaries = [
+        int(jobs["min_salary"])
+        for jobs in read(path)
+        if int_verify_exceptions(jobs["min_salary"])
+    ]
+    return min(all_salaries)
 
 
 def matches_salary_range(job, salary):

@@ -1,4 +1,5 @@
 from src.jobs import read
+# colab marcelo Borges turma - 09
 
 
 def get_unique_job_types(path):
@@ -90,7 +91,13 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
-    return []
+    filterByType = []
+
+    for job in jobs:
+        if job['industry'] == industry:
+            filterByType.append(job)
+
+    return filterByType
 
 
 def get_max_salary(path):

@@ -1,6 +1,8 @@
 from src.jobs import read
 
-g_read = read('/media/luvecaro/101C902A1C900D3A/trybe/computer-science/projects/sd-09-project-job-insights/src/jobs.csv')
+# g_read = read(
+# '/media/luvecaro/101C902A1C900D3A/trybe/computer-science/projects/sd-09-project-job-insights/src/jobs.csv'
+# )
 
 
 def get_unique_job_types(path):

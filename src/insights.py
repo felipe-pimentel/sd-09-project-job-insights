@@ -34,7 +34,7 @@ def get_unique_industries(path):
     general_list = read(path)
 
     industry_list = [industry["industry"] for industry in general_list]
-    unic_industry_list = [ind for ind in set(industry_list) if ind != '']
+    unic_industry_list = [ind for ind in set(industry_list) if ind != ""]
 
     """Checks all different industries and returns a list of them
 
@@ -74,6 +74,16 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
+    list = read(path)
+    salary_list = [
+        salary["max_salary"] for salary in list if
+        salary["max_salary"] != "invalid"
+    ]
+    no_alone = [
+        element for element in salary_list if element != ''
+    ]
+    int_elements = [int(sal) for sal in no_alone]
+    maximum = max(int_elements)
     """Get the maximum salary of all jobs
 
     Must call `read`
@@ -88,10 +98,21 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+    return maximum
 
 
 def get_min_salary(path):
+    list = read(path)
+    salary_list = [
+        salary["min_salary"] for salary in list if
+        salary["min_salary"] != "invalid"
+    ]
+    no_alone = [
+        element for element in salary_list if element != ''
+    ]
+    int_elements = [int(sal) for sal in no_alone]
+    minimum = min(int_elements)
+
     """Get the minimum salary of all jobs
 
     Must call `read`
@@ -106,7 +127,7 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
+    return minimum
 
 
 def matches_salary_range(job, salary):

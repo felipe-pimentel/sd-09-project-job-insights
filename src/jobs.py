@@ -3,7 +3,6 @@ import csv
 
 
 @lru_cache
-
 def read(path):
     with open(path) as file:
         header_table = csv.DictReader(file)

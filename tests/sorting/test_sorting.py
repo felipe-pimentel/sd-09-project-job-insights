@@ -1,4 +1,5 @@
 from src.sorting import sort_by
+import pytest
 
 jobs = [
     {
@@ -23,7 +24,11 @@ def test_sort_by_criteria():
     expected_date = [
         "22-09-2021",
         "05-04-2021",
-        "01-08-2021"]
+        "01-08-2021"
+    ]
+
+    with pytest.raises(ValueError, match="invalid sorting criteria:"):
+        sort_by('jobs', 'criteria')
 
     sort_by(jobs, "min_salary")
     assert [job["min_salary"] for job in jobs] == [1500, 2000, 4500]

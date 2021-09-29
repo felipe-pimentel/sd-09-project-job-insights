@@ -54,6 +54,8 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
+    unic_element = [unic for unic in jobs if unic["industry"] == industry]
+
     """Filters a list of jobs by industry
 
     Parameters
@@ -68,7 +70,7 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
-    return []
+    return unic_element
 
 
 def get_max_salary(path):

@@ -74,6 +74,7 @@ def matches_salary_range(job, salary):
         raise ValueError("bad request")
     return job['max_salary'] > salary >= job['min_salary']
 
+
 def filter_by_salary_range(jobs, salary):
     """Filters a list of jobs by salary range
 

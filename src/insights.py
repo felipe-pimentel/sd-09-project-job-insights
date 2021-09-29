@@ -1,109 +1,55 @@
+from src.jobs import read
+
+
 def get_unique_job_types(path):
-    """Checks all different job types and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique job types
-    """
-    return []
+    csv_list = read(path)
+    csv_type_list = set()
+    for job in csv_list:
+        csv_type_list.add(job["job_type"])
+    return csv_type_list
 
 
 def filter_by_job_type(jobs, job_type):
-    """Filters a list of jobs by job_type
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    job_type : str
-        Job type for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided job_type
-    """
-    return []
+    job_list = []
+    for job in jobs:
+        if job["job_type"] == job_type:
+            job_list.append(job)
+    return job_list
 
 
 def get_unique_industries(path):
-    """Checks all different industries and returns a list of them
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    list
-        List of unique industries
-    """
-    return []
+    job_list = read(path)
+    industries = set()
+    for industry in job_list:
+        if industry["industry"] != "":
+            industries.add(industry["industry"])
+    return industries
 
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
+    industry_list = []
+    for job in jobs:
+        if job["industry"] == industry:
+            industry_list.append(job)
+    return industry_list
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+    job_list = read(path)
+    max_salary = []
+    for job in job_list:
+        if job["max_salary"].isnumeric():
+            max_salary.append(int(job["max_salary"]))
+    return max(max_salary)
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
-
-    Must call `read`
-
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+    job_list = read(path)
+    min_salary = []
+    for job in job_list:
+        if job["min_salary"].isnumeric():
+            min_salary.append(int(job["min_salary"]))
+    return min(min_salary)
 
 
 def matches_salary_range(job, salary):

@@ -38,21 +38,8 @@ def get_unique_industries(path):
 
 
 def filter_by_industry(jobs, industry):
-    """Filters a list of jobs by industry
-
-    Parameters
-    ----------
-    jobs : list
-        List of jobs to be filtered
-    industry : str
-        Industry for the list filter
-
-    Returns
-    -------
-    list
-        List of jobs with provided industry
-    """
-    return []
+    jobs_filtered = [job for job in jobs if job['industry'] == industry]
+    return jobs_filtered
 
 
 def get_max_salary(path):
@@ -71,9 +58,7 @@ def get_min_salary(path):
     for job in jobs_list:
         valid = job['min_salary'] != '' and job['min_salary'] != 'invalid'
         if valid and (int(job['min_salary']) < min_salary or min_salary == 0):
-            print(f"{job['min_salary']} > {min_salary}")
             min_salary = int(job['min_salary'])
-    print(min_salary)
     return min_salary
 
 

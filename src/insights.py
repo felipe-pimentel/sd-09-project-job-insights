@@ -130,12 +130,11 @@ def get_min_salary(path):
 
 def matches_salary_range(job, salary):
     try:
-
-        if job["max_salary"] > job["min_salary"]:
+        if job["max_salary"] < job["min_salary"]:
             raise ValueError
         if int(job["max_salary"]) >= int(salary) >= int(job["min_salary"]):
             return True
-    except (ValueError, KeyError, TypeError):
+    except (KeyError, TypeError, ValueError):
         raise ValueError
 
     """Checks if a given salary is in the salary range of a given job

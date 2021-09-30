@@ -1,7 +1,7 @@
 from src.sorting import sort_by
 
 
-def test_sorting_by_criteria():
+def test_sort_by_criteria():
     jobs = [
         {
             "max_salary": "1000",

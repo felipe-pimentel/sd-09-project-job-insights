@@ -1,14 +1,12 @@
-from jobs import read
+def matches_salary_range(job, salary):
+    try:
+        if job["min_salary"] > job["max_salary"]:
+            raise ValueError
 
+        if int(job["min_salary"]) <= int(salary) <= int(job["max_salary"]):
+            return True
 
-def get_unique_job_types(path):
-    general_list = read(path)
+    except (ValueError, KeyError, TypeError):
+        raise ValueError
+    return False
 
-    job_list = [job['max_salary'] for job in general_list]
-    unic_job_list = [element for element in job_list if element != '']
-    elements_int = [int(sal) for sal in unic_job_list]
-
-    return max(elements_int)
-
-
-get_unique_job_types("jobs.csv")

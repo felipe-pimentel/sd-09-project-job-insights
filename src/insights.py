@@ -76,12 +76,11 @@ def filter_by_industry(jobs, industry):
 def get_max_salary(path):
     list = read(path)
     salary_list = [
-        salary["max_salary"] for salary in list if
-        salary["max_salary"] != "invalid"
+        salary["max_salary"]
+        for salary in list
+        if salary["max_salary"] != "invalid"
     ]
-    no_alone = [
-        element for element in salary_list if element != ''
-    ]
+    no_alone = [element for element in salary_list if element != ""]
     int_elements = [int(sal) for sal in no_alone]
     maximum = max(int_elements)
     """Get the maximum salary of all jobs
@@ -104,12 +103,11 @@ def get_max_salary(path):
 def get_min_salary(path):
     list = read(path)
     salary_list = [
-        salary["min_salary"] for salary in list if
-        salary["min_salary"] != "invalid"
+        salary["min_salary"]
+        for salary in list
+        if salary["min_salary"] != "invalid"
     ]
-    no_alone = [
-        element for element in salary_list if element != ''
-    ]
+    no_alone = [element for element in salary_list if element != ""]
     int_elements = [int(sal) for sal in no_alone]
     minimum = min(int_elements)
 
@@ -131,6 +129,15 @@ def get_min_salary(path):
 
 
 def matches_salary_range(job, salary):
+    try:
+        e_values = job.values()
+        if e_values[0] > e_values[1]:
+            raise ValueError
+        if int(job["max_salary"]) >= int(salary) >= int(job["min_salary"]):
+            return True
+    except (ValueError, KeyError, TypeError):
+        raise ValueError
+
     """Checks if a given salary is in the salary range of a given job
 
     Parameters
@@ -153,7 +160,8 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    pass
+
+    return False
 
 
 def filter_by_salary_range(jobs, salary):

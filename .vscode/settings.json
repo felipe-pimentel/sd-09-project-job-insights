@@ -8,5 +8,9 @@
     "python.formatting.blackArgs": [
         "-l 79"
     ],
-    "python.formatting.provider": "black"
+    "python.formatting.provider": "black",
+    "python.pythonPath": "python3",
+    "code-runner.executorMap": {
+    "python": "/usr/bin/python3"
+    }
 }

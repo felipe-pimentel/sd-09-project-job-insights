@@ -1,5 +1,6 @@
 from src.jobs import read
 
+
 def get_unique_job_types(path):
     list_of_jobs = read(path)
     """Checks all different job types and returns a list of them
@@ -104,6 +105,7 @@ def get_max_salary(path):
         if job_salary["max_salary"] != "":
             collection_salaries.add(int(job_salary["max_salary"]))
     return max(collection_salaries)
+
 
 def get_min_salary(path):
     """Get the minimum salary of all jobs

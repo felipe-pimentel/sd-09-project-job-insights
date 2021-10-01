@@ -39,7 +39,10 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    return []
+    filtered_by_job_type = [job
+                            for job in jobs
+                            if job["job_type"] == job_type]
+    return filtered_by_job_type
 
 
 def get_unique_industries(path):
@@ -81,7 +84,15 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
-    return []
+
+    """Seguindo exemplo do Course (filtro de restaurantes pela nota deles):
+    Quando uma lista for criada por resultado de um for,
+    pode-se usar a compreensão de listas
+    """
+    filtered_by_industry = [job
+                            for job in jobs
+                            if job["industry"] == industry]
+    return filtered_by_industry
 
 
 def get_max_salary(path):

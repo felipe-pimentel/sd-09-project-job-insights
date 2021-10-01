@@ -23,12 +23,18 @@ def test_sort_by_criteria():
       },
     ]
     min_salary = list((jobs_data))
-    # print(min_salary)
-
-    max_salary = list((jobs_data))
+    # print(test_sort_by_criteria(min_salary))
+    # max_salary = list((jobs_data))
+    max_salary = [
+      jobs_data[2],
+      jobs_data[1],
+      jobs_data[0],
+    ]
 
     sort_by(jobs_data, "min_salary")
     assert jobs_data == min_salary
 
     sort_by(jobs_data, "max_salary")
     assert jobs_data == max_salary
+
+    print(test_sort_by_criteria("./src.sorting"))

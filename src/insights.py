@@ -101,9 +101,9 @@ def get_max_salary(path):
     """
     list_of_salaries = read(path)
     collection_salaries = set()
-    for job_salary in list_of_salaries:
-        if job_salary["max_salary"] != "":
-            collection_salaries.add(int(job_salary["max_salary"]))
+    for j_salary in list_of_salaries:
+        if j_salary["max_salary"] != "" and j_salary["max_salary"].isnumeric():
+            collection_salaries.add(int(j_salary["max_salary"]))
     return max(collection_salaries)
 
 
@@ -124,9 +124,9 @@ def get_min_salary(path):
     """
     list_of_salaries = read(path)
     collection_salaries = set()
-    for job_salary in list_of_salaries:
-        if job_salary["max_salary"] != "":
-            collection_salaries.add(int(job_salary["max_salary"]))
+    for j_salary in list_of_salaries:
+        if j_salary["min_salary"] != "" and j_salary["min_salary"].isnumeric():
+            collection_salaries.add(int(j_salary["min_salary"]))
     return min(collection_salaries)
 
 

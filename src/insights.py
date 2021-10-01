@@ -26,6 +26,7 @@ def get_unique_industries(path):
             ind_list.append(i["industry"])
     return ind_list
 
+
 def filter_by_industry(jobs, industry):
     job_list = []
     for j in jobs:
@@ -79,5 +80,6 @@ def filter_by_salary_range(jobs, salary):
         try:
             if matches_salary_range(x, salary):
                 range_sal.append(x)
-        except ValueError:("Error")
+        except ValueError:
+            ("Error")
     return range_sal

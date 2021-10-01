@@ -5,7 +5,7 @@ import csv
 @lru_cache
 def read(path):
     with open(path) as csv_file:
-        reader_csv = csv.reader(csv_file)
+        reader_csv = csv.reader(csv_file, delimiter=',', quotechar='"')
         header, *jobs = reader_csv
 
         job_list = []

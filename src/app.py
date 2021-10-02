@@ -8,4 +8,4 @@ def create_app() -> Flask:
 
     return app
 
-    #commit pra abrir PR
+    # commit pra abrir PR

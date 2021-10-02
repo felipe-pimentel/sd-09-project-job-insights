@@ -80,5 +80,6 @@ def filter_by_salary_range(jobs, salary):
         try:
             if matches_salary_range(job, salary) is True:
                 jobs_filtered_by_salary.append(job)
-        except (ValueError, TypeError, AssertionError):
+        except (ValueError, TypeError, KeyError):
             print('O trabalho não está na faixa salarial adequada')
+    return jobs_filtered_by_salary

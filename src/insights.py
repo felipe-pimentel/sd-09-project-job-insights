@@ -64,7 +64,7 @@ def get_max_salary(path):
                 data_jobs_max_salary.add(int(job["max_salary"]))
         except ValueError:
             print('Campo não encontrado')
-    return min(data_jobs_max_salary)
+    return max(data_jobs_max_salary)
 
 
 def get_min_salary(path):

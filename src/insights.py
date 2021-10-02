@@ -61,9 +61,9 @@ def get_min_salary(path):
 
 def matches_salary_range(job, salary):
     try:
-        if job['min_salary'] <= salary <= job['max_salary']:
+        if int(job['min_salary']) <= int(salary) <= int(job['max_salary']):
             return True
-        elif job['min_salary'] > job['max_salary']:
+        elif int(job['min_salary']) > int(job['max_salary']):
             raise ValueError
         else:
             return False

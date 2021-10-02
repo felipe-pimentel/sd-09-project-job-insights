@@ -62,13 +62,10 @@ def get_unique_industries(path):
     all_industries = []
 
     for job in jobs:
-        if (len(job["industry"]) > 0):
+        if len(job["industry"]) > 0:
             all_industries.append(job["industry"])
 
     return list(set(all_industries))
-
-
-# print(get_unique_industries("jobs.csv"))
 
 
 def filter_by_industry(jobs, industry):
@@ -104,7 +101,17 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+    jobs = read(path)
+    all_max_salary = []
+
+    for job in jobs:
+        if len(job["max_salary"]) > 0 and job["max_salary"].isnumeric():
+            all_max_salary.append(int(job["max_salary"]))
+
+    return max(all_max_salary)
+
+
+# print(get_max_salary("jobs.csv"))
 
 
 def get_min_salary(path):

@@ -60,7 +60,7 @@ def get_max_salary(path):
     data_jobs_max_salary = set()
     for job in jobs_list:
         if job["max_salary"] != "":
-            data_jobs_max_salary.add(job["max_salary"])
+            data_jobs_max_salary.add(int(job["max_salary"]))
     return max(data_jobs_max_salary)
 
 
@@ -69,7 +69,7 @@ def get_min_salary(path):
     data_jobs_min_salary = set()
     for job in jobs_list:
         if job["min_salary"] != "":
-            data_jobs_min_salary.add(job["min_salary"])
+            data_jobs_min_salary.add(int(job["min_salary"]))
     return min(data_jobs_min_salary)
 
 

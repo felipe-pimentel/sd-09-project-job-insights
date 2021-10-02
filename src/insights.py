@@ -59,17 +59,23 @@ def get_max_salary(path):
     jobs_list = src.jobs.read(path)
     data_jobs_max_salary = set()
     for job in jobs_list:
-        if job["max_salary"] != "":
-            data_jobs_max_salary.add(int(job["max_salary"]))
-    return max(data_jobs_max_salary)
+        try:
+            if job["max_salary"] != "":
+                data_jobs_max_salary.add(int(job["max_salary"]))
+        except ValueError:
+            print('Campo não encontrado')
+    return min(data_jobs_max_salary)
 
 
 def get_min_salary(path):
     jobs_list = src.jobs.read(path)
     data_jobs_min_salary = set()
     for job in jobs_list:
-        if job["min_salary"] != "":
-            data_jobs_min_salary.add(int(job["min_salary"]))
+        try:
+            if job["min_salary"] != "":
+                data_jobs_min_salary.add(int(job["min_salary"]))
+        except ValueError:
+            print('Campo não encontrado')
     return min(data_jobs_min_salary)
 
 

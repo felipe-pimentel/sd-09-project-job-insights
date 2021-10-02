@@ -36,4 +36,3 @@ def test_sort_by_criteria(db_example):
         "2021-10-18",
         "2021-01-30",
         ]
-

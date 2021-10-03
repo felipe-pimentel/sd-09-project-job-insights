@@ -136,7 +136,6 @@ def matches_salary_range(job, salary):
         elif int(job["max_salary"]) >= int(salary) >= int(job["min_salary"]):
             return True
     except (ArithmeticError, KeyError, TypeError, ValueError):
-        return False
         raise ValueError
 
     """Checks if a given salary is in the salary range of a given job

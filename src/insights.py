@@ -171,7 +171,23 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    pass
+    # dict.get(key) => Documentacao Python
+    # Retorna o valor para key se key está no dicionário, caso contrário
+    # "default". Se default não é fornecido, será usado o valor padrão "None",
+    # de tal forma que este método nunca levanta um KeyError.
+    min_salary, max_salary = job.get("min_salary"), job.get("max_salary")
+
+    if (
+        # not min_salary
+        # or not max_salary
+        type(min_salary) != int
+        or type(max_salary) != int
+        or min_salary > max_salary
+        or type(salary) != int
+    ):
+        raise ValueError
+
+    return min_salary <= salary <= max_salary
 
 
 def filter_by_salary_range(jobs, salary):

@@ -31,7 +31,7 @@ def list_jobs():
     industry = request.args.get("industry", None)
     job_type = request.args.get("job_type", None)
 
-    jobs = read(path="src/jobs.csv")
+    jobs = read("src/jobs.csv")
     if industry:
         jobs = filter_by_industry(jobs, industry)
     if job_type:

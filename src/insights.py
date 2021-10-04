@@ -7,6 +7,7 @@ def get_unique_job_types(path):
     for job in list_dict:
         if not job["job_type"] in jobs_filter:
             jobs_filter.append(job["job_type"])
+            # print(jobs_filter)
     return jobs_filter
 
 
@@ -15,6 +16,7 @@ def filter_by_job_type(jobs, job_type):
     for job in jobs:
         if job["job_type"] == job_type:
             jobs_filter.append(job)
+            # print(jobs_filter)
     return jobs_filter
 
 
@@ -24,7 +26,7 @@ def get_unique_industries(path):
     for ind in list_dict:
         if not ind["industry"] in ind_filter and ind["industry"] != "":
             ind_filter.append(ind["industry"])
-    print(ind_filter)
+    # print(ind_filter)
     return ind_filter
 
 

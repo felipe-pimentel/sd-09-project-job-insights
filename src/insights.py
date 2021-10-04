@@ -154,9 +154,32 @@ def get_min_salary(path):
         if salary < min_salary:
             min_salary = salary
 
-    print(min_salary)
-
     return min_salary
+
+
+def check_if_the_elements_exist(min_salary, max_salary):
+    print("\n======== chec exists =========")
+    print(f"min_salary: {min_salary}; max_salary: {max_salary}")
+    print("min_salary: {}".format(bool(min_salary)))
+    print("max_salary: {}".format(bool(max_salary)))
+    print("===============================")
+
+    if not bool(min_salary):
+        raise ValueError
+
+    if not bool(max_salary):
+        raise ValueError
+
+
+def check_if_the_elements_are_int(min_salary, max_salary, salary):
+    if not isinstance(min_salary, int):
+        raise ValueError
+
+    if not isinstance(max_salary, int):
+        raise ValueError
+
+    if not isinstance(salary, int):
+        raise ValueError
 
 
 def matches_salary_range(job, salary):
@@ -182,7 +205,43 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    pass
+    # ========== DEBUG =============
+
+    # jobs = [job for in jobs]
+
+    """ print('[job dic] > {}'.format(job))
+    print('[salary] > {}'.format(salary)) """
+
+    try:
+        min_salary = (job["min_salary"])
+        max_salary = job["max_salary"]
+
+        check_if_the_elements_exist(min_salary, max_salary)
+        check_if_the_elements_are_int(min_salary, max_salary, salary)
+
+        print("\n======== matches_salary_range =========")
+        print(f"min_salary: {min_salary}; max_salary: {max_salary}")
+        print("min_salary: {}".format(bool(min_salary)))
+        print("max_salary: {}".format(bool(max_salary)))
+        print("===============================")
+        """
+        valid_salary = check_if_the_elements_exist(min_salary, max_salary)
+        are_int = check_if_the_elements_are_int(min_salary, max_salary, salary)
+        """
+        if min_salary > max_salary:
+            raise ValueError
+
+        """ print("valid_salary: {}".format(valid_salary))
+        print("are int: {}".format(are_int)) """
+
+        # print("valid range: {}".format(valid_range))
+        """ if salary > job["min_salary"] and salary < job["max_salary"]:
+            return True """
+
+    except ValueError:
+        print("ValueError")
+    else:
+        return True
 
 
 def filter_by_salary_range(jobs, salary):
@@ -200,4 +259,7 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
+
+    # print(f"Jobs: {jobs}")
+
     return []

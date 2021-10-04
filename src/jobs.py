@@ -1,18 +1,24 @@
+import csv
 from functools import lru_cache
 
 
-@lru_cache
+@lru_cache(maxsize=None)
 def read(path):
-    """Reads a file from a given path and returns its contents
+    try:
+        with open(path) as file:
+            job_reader = csv.DictReader(file, delimiter=",", quotechar='"')
+            job_reader = [dict(job) for job in job_reader]
+            return job_reader
+    except OSError:
+        return("Não foi possível ler o arquivo")
+    finally:
+        print("Tentativa de ler o arquivo")
 
-    Parameters
-    ----------
-    path : str
-        Full path to file
 
-    Returns
-    -------
-    list
-        List of rows as dicts
-    """
-    return []
+# print(read("src/jobs.csv"))
+
+
+# for result in read("src/jobs.csv"):
+#   print(type(result))
+# print(type(read("src/jobs.csv")))
+# print(len(read("src/jobs.csv")))

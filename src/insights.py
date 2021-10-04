@@ -78,7 +78,6 @@ def matches_salary_range(job, salary):
         If `salary` isn't a valid integer
     """
     pass
-    # eae
 
 
 def filter_by_salary_range(jobs, salary):

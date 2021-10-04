@@ -17,7 +17,7 @@ def test_sort_by_criteria():
             "max_salary": "6000",
             "min_salary": "4001",
             "date_posted": "2021-05-01"
-        }
+        },
     ]
 
     criteria = ['min_salary', 'max_salary', 'date_posted']

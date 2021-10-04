@@ -1,3 +1,6 @@
+from src.jobs import read
+
+
 def get_unique_job_types(path):
     """Checks all different job types and returns a list of them
 
@@ -13,7 +16,13 @@ def get_unique_job_types(path):
     list
         List of unique job types
     """
-    return []
+    jobs = read(path)
+    results = []
+    for row in jobs:
+        job_type = row["job_type"]
+        if job_type not in results:
+            results.append(job_type)
+    return results
 
 
 def filter_by_job_type(jobs, job_type):
@@ -31,7 +40,12 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    return []
+    results = []
+    for row in jobs:
+        job_ = row["job_type"]
+        if job_type == job_:
+            results.append(row)
+    return results
 
 
 def get_unique_industries(path):
@@ -49,7 +63,13 @@ def get_unique_industries(path):
     list
         List of unique industries
     """
-    return []
+    jobs = read(path)
+    results = []
+    for row in jobs:
+        industry = row["industry"]
+        if industry not in results and industry != "":
+            results.append(industry)
+    return results
 
 
 def filter_by_industry(jobs, industry):
@@ -67,7 +87,12 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
-    return []
+    results = []
+    for row in jobs:
+        industry_ = row["industry"]
+        if industry == industry_:
+            results.append(row)
+    return results
 
 
 def get_max_salary(path):
@@ -85,7 +110,15 @@ def get_max_salary(path):
     int
         The maximum salary paid out of all job opportunities
     """
-    pass
+    jobs = read(path)
+    salaries = []
+    for row in jobs:
+        try:
+            if row["max_salary"] != "":
+                salaries.append(int(row["max_salary"]))
+        except ValueError:
+            print("Valor não convertido")
+    return max(salaries)
 
 
 def get_min_salary(path):
@@ -103,7 +136,53 @@ def get_min_salary(path):
     int
         The minimum salary paid out of all job opportunities
     """
-    pass
+    jobs = read(path)
+    salaries = []
+    for row in jobs:
+        try:
+            if row["min_salary"] != "":
+                salaries.append(int(row["min_salary"]))
+        except ValueError:
+            print("Valor não convertido")
+    return min(salaries)
+
+
+def job_range_exists(row):
+    """
+    Checks
+        If `job["min_salary"]` or `job["max_salary"]` doesn't exists
+    Raises
+        ValueError
+    """
+    if "min_salary" not in row or "max_salary" not in row:
+        return ValueError
+
+
+def job_range(row):
+    """
+    Checks
+        If `job["min_salary"]` is greather than `job["max_salary"]`
+    Raises
+        ValueError
+    """
+    if row["min_salary"] > row["max_salary"]:
+        raise ValueError
+
+
+def job_int(row, salary):
+    """
+    Checks
+        If `job["min_salary"]` or `job["max_salary"]` aren't valid integers
+        If `salary` isn't a valid integer
+    Raises
+        ValueError
+    """
+    if not isinstance(salary, int):
+        raise ValueError
+    if not isinstance(row["min_salary"], int):
+        raise ValueError
+    if not isinstance(row["max_salary"], int):
+        raise ValueError
 
 
 def matches_salary_range(job, salary):
@@ -129,7 +208,13 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    pass
+    try:
+        job_int(job, salary)
+        job_range_exists(job)
+        job_range(job)
+        return (job["min_salary"] <= salary < job["max_salary"])
+    except ValueError:
+        print("Value error")
 
 
 def filter_by_salary_range(jobs, salary):
@@ -147,4 +232,11 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return []
+    results = []
+    for row in jobs:
+        try:
+            if matches_salary_range(row, salary) is True:
+                results.append(row)
+        except ValueError:
+            print("Value error")
+    return results

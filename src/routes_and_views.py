@@ -17,6 +17,7 @@ bp = Blueprint("client", __name__, template_folder="templates")
 
 
 @bp.route("/")
+@bp.route("/index")
 def index():
     with open("README.md", encoding="UTF-8") as file:
         md = markdown(file.read())

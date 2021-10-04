@@ -39,10 +39,10 @@ def filter_by_job_type(jobs, job_type):
     list
         List of jobs with provided job_type
     """
-    job_list = set()
+    job_list = []
     for j in jobs:
         if j["job_type"] in job_type:
-            job_list.add(j)
+            job_list.append(j)
     return job_list
 
 
@@ -85,10 +85,10 @@ def filter_by_industry(jobs, industry):
     list
         List of jobs with provided industry
     """
-    job_list = set()
+    job_list = []
     for j in jobs:
         if j["industry"] in industry:
-            job_list.add(j)
+            job_list.append(j)
     return job_list
 
 

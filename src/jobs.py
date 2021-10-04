@@ -18,9 +18,9 @@ def read(path):
     """
     with open(path) as file:
         file_csv = csv.DictReader(file)
-        list_jobs = []
+        results = [line for line in file_csv]
 
-        for line in file_csv:
-            list_jobs.append(line)
+        # for line in file_csv:
+        #     results.append(line)
 
-    return list_jobs
+    return results

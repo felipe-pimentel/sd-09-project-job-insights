@@ -24,13 +24,13 @@ def test_sort_by_criteria(sorting_by_criteria):
         result = sort_by(sorting_by_criteria, type)
 
         if type == "min_salary":
-            assert type(result[0]["min_salary"]) is None
-            assert result[1]["min_salary"] == 0
-            assert result[2]["min_salary"] == 1
-            assert result[3]["min_salary"] == 5
-            assert result[4]["min_salary"] == 23
-            assert result[5]["min_salary"] == 546
-            assert result[6]["min_salary"] == 2639
+            assert result[0]["min_salary"] == 0
+            assert result[1]["min_salary"] == 1
+            assert result[2]["min_salary"] == 5
+            assert result[3]["min_salary"] == 23
+            assert result[4]["min_salary"] == 546
+            assert result[5]["min_salary"] == 2639
+            assert type(result[6]["min_salary"]) is None
         elif type == "max_salary":
             assert result[0]["max_salary"] == 33682
             assert result[1]["max_salary"] == 15848

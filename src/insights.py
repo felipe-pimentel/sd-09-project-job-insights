@@ -63,7 +63,6 @@ def get_max_salary(path):
     return maxSalary
    
 
-
 def get_min_salary(path):
     """Get the minimum salary of all jobs
 

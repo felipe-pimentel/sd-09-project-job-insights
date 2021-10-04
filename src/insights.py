@@ -161,8 +161,22 @@ def matches_salary_range(job, salary):
         If `job["min_salary"]` is greather than `job["max_salary"]`
         If `salary` isn't a valid integer
     """
-    pass
+    if 'min_salary' not in job or 'max_salary' not in job:
+        raise ValueError('Values should not empty')
 
+    if (
+        type(job['min_salary']) != int
+        or type(job['max_salary']) != int
+        or type(salary) != int
+    ):
+        raise ValueError('The values ​​are inconsistent')
+
+    if job['min_salary'] > job['max_salary']:
+        raise ValueError('min salary is greather than max salary')
+
+    if salary >= job['min_salary'] and salary <= job['max_salary']:
+        return True
+    return False
 
 def filter_by_salary_range(jobs, salary):
     """Filters a list of jobs by salary range
@@ -179,4 +193,13 @@ def filter_by_salary_range(jobs, salary):
     list
         Jobs whose salary range contains `salary`
     """
-    return []
+    job_list = []
+
+    for j in jobs:
+        try:
+            if matches_salary_range(j, salary):
+                job_list.append(j)
+        except ValueError:
+            pass
+
+    return job_list

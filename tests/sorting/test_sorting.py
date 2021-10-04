@@ -25,9 +25,9 @@ def test_sort_by_criteria():
     assert jobs_list[0]["min_salary"] == "1000"
 
     criteria = "max_salary"
-    sort_by(jobs_list, criteria[1])
+    sort_by(jobs_list, criteria)
     assert jobs_list[0]["max_salary"] == "2000"
 
     criteria = "date_posted"
-    sort_by(jobs_list, criteria[2])
+    sort_by(jobs_list, criteria)
     assert jobs_list[0]["date_posted"] == "2021-03-01"

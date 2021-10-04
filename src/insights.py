@@ -69,7 +69,7 @@ def matches_salary_range(job, salary):
         raise ValueError("min e max salary devem existir")
     if (job["min_salary"] > ["max_salary"]):
         raise ValueError("max salary deve ser maior que min salary")
-    check_salary = job["min_salary"] <= salary <= job["max_salary"]
+    check_salary = int(job["min_salary"]) <= salary <= int(job["max_salary"])
     return check_salary
 
 

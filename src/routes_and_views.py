@@ -17,7 +17,6 @@ bp = Blueprint("client", __name__, template_folder="templates")
 
 
 @bp.route("/")
-@bp.route("/index")
 def index():
     with open("README.md", encoding="UTF-8") as file:
         md = markdown(file.read())
@@ -58,6 +57,12 @@ def list_jobs():
     }
 
     return render_template("list_jobs.jinja2", ctx=ctx)
+
+
+@bp.route("/job/<index>")
+def job(index):
+    return "Rota index"
+
 
 
 def init_app(app: Flask):

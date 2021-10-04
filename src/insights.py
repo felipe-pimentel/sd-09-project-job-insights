@@ -55,9 +55,7 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    jobs = read(path)
-    maxSalary = 0
-    return maxSalary
+    pass
 
 
 def get_min_salary(path):

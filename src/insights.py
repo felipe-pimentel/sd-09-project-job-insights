@@ -58,8 +58,8 @@ def get_max_salary(path):
     jobs = read(path)
     maxSalary = 0
     for job in jobs:
-        if job["max_salary"] != "" and int(job["max_salary"]) > maxSalary:
-            maxSalary = job["max_salary"])
+        if job["max_salary"].isdigit() and int(job["max_salary"]) > maxSalary:
+            maxSalary = int(job["max_salary"])
     return maxSalary
 
 

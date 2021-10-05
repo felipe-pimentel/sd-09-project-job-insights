@@ -21,7 +21,7 @@ def test_sort_by_criteria():
             "max_salary": 7000,
             "date_posted": "2008-09-15"
         },
-          {
+        {
             "job_title": "Dev_JavaScript",
             "min_salary": 500,
             "max_salary": 1800,
@@ -49,4 +49,3 @@ def test_sort_by_criteria():
     assert listJobs[1]["date_posted"] == "2008-09-15"
     assert listJobs[2]["date_posted"] == "2011-03-18"
     assert listJobs[3]["date_posted"] == "2020-10-21"
-

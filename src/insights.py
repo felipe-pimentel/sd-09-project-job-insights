@@ -73,5 +73,5 @@ def filter_by_salary_range(jobs, salary):
                 print(job)
                 filtered_jobs.append(job)
         except ValueError:
-            print("Algo deu errado...")
+            pass
     return filtered_jobs

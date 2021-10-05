@@ -71,6 +71,7 @@ def get_min_salary(path):
             minSalaries.append(int(job["min_salary"]))
     return min(minSalaries)
 
+
 def matches_salary_range(job, salary):
     """Checks if a given salary is in the salary range of a given job
 

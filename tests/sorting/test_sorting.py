@@ -47,8 +47,8 @@ def test_sort_by_criteria(jobs):
     for job in jobs:
         date_posted.append(job["date_posted"])
     assert date_posted == [
-        "2021-08-22",
-        "2021-08-21",
-        "2021-08-20",
-        "2021-08-19",
+        "2021-10-04",
+        "2021-10-05",
+        "2021-10-06",
+        "2021-10-07",
     ]

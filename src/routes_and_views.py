@@ -11,7 +11,7 @@ from .insights import (
     get_min_salary,
     get_max_salary,
 )
-from .more_insights import slice_jobs, get_int_from_args, build_jobs_urls
+from .more_insights import slice_jobs, get_int_from_args, build_jobs_urls, get_job
 
 bp = Blueprint("client", __name__, template_folder="templates")
 
@@ -22,6 +22,11 @@ def index():
         md = markdown(file.read())
     return render_template("index.jinja2", md=md)
 
+@bp.route("/job/<index>")
+def job(index):
+    jobs = read(path="src/jobs.csv")
+    job_by_index = get_job(jobs, index)
+    return render_template("job.jinja2", job=job_by_index)
 
 @bp.route("/jobs")
 def list_jobs():

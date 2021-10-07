@@ -18,6 +18,7 @@ jobs_mock = [
     }
 ]
 
+
 def test_sort_by_criteria():
     sort_by(jobs_mock, "min_salary")
     assert jobs_mock[0]["min_salary"] == 1000

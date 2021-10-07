@@ -30,7 +30,7 @@ def index():
 
 @bp.route("/job/<index>")
 def job(index):
-    jobs = read(path="src/jobs.csv")
+    jobs = read("src/jobs.csv")
     job_by_index = get_job(jobs, index)
     return render_template("job.jinja2", job=job_by_index)
 

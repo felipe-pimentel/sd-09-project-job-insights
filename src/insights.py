@@ -42,8 +42,8 @@ def get_max_salary(path):
     max_salary = 0
     for job in jobs:
         if (
-            job['max_salary'] != '' 
-            and job['max_salary'] != 'invalid' 
+            job['max_salary'] != ''
+            and job['max_salary'] != 'invalid'
             and int(job['max_salary']) > max_salary
            ):
             max_salary = int(job['max_salary'])
@@ -55,7 +55,7 @@ def get_min_salary(path):
     min_salary = 100000000
     for job in jobs:
         if (
-            job['min_salary'] != '' 
+            job['min_salary'] != ''
             and job['min_salary'] != 'invalid'
             and int(job['min_salary']) < min_salary
            ):
